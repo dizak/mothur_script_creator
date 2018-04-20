@@ -13,6 +13,3 @@ install:
 before_script:
   - mkdir db
   - bash INSTALL.sh -p $HOME/db/ -t 4
-
-script:
-  - python -m unittets tests.tests
