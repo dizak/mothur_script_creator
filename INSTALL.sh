@@ -58,27 +58,22 @@ if [ -n "$DB_PATH_ANSWER" ]; then
     1)
     mothulity_dbaser.py $DB_PATH_ANSWER --unite-ITS-02 &&
     mothulity.py . --set-align-database-path "${DB_PATH_ANSWER}/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path "${DB_PATH_ANSWER}/UNITEv6_sh_99.tax"
-    break
     ;;
     2)
     mothulity_dbaser.py $DB_PATH_ANSWER --unite-ITS-s-02 &&
     mothulity.py . --set-align-database-path "${DB_PATH_ANSWER}/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path "${DB_PATH_ANSWER}/UNITEv6_sh_97_s.tax"
-    break
     ;;
     3)
     mothulity_dbaser.py $DB_PATH_ANSWER --silva-102 &&
     echo 'Silva-102 is not handled automatically yet. It was NOT set as default database.'
-    break
     ;;
     4)
     mothulity_dbaser.py $DB_PATH_ANSWER --silva-119 &&
     mothulity.py . --set-align-database-path "${DB_PATH_ANSWER}/silva.nr_v119.align" --set-taxonomy-database-path "${DB_PATH_ANSWER}/silva.nr_v119.tax"
-    break
     ;;
     5)
     mothulity_dbaser.py $DB_PATH_ANSWER --silva-123 &&
     mothulity.py . --set-align-database-path "${DB_PATH_ANSWER}/" --set-taxonomy-database-path "${DB_PATH_ANSWER}/"
-    break
     ;;
     *)
     echo 'No such database.'
