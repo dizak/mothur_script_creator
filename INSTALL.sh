@@ -30,8 +30,9 @@ else echo "Found Anaconda in: ${CONDA_PATH}";
 fi
 # Backup .bashrc before editing it
 cp $BASH_RC "${BASH_RC}.bak"
-# Add mothulity to PATH and source it
+# Add mothulity to PATH, source it and export PATH just for case
 echo "export PATH=\"${MOTHULITY_PATH}:\$PATH\"" >> $BASH_RC
+export PATH=/$HOME/$MOTHULITY_PATH:$PATH
 . ${BASH_RC}
 # Create regular mothulity env from mothulity.yaml
 conda env create --file "${MOTHULITY_PATH}/mothulity.yaml" --force
