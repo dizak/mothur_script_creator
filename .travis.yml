@@ -11,7 +11,8 @@ install:
   - conda info -a
 
 before_script:
-  - bash INSTALL.sh
+  - mkdir db
+  - bash INSTALL.sh -p $HOME/db/ -t 4
 
 script:
   - python -m unittets tests.tests
