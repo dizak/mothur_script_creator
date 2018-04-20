@@ -11,10 +11,13 @@ install:
   - conda info -a
 
 before_script:
+  - pwd
   - conda env create --file mothulity.yaml
   - source activate mothulity
   - export PATH=$HOME/dizak/mothulity:$PATH
   - mkdir $HOME/db
+  - which mothulity.py
 
 script:
+  - python -m unittest -v tests.tests
   - mothulity_dbaser.py $HOME/db --silva-119
