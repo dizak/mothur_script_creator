@@ -3,7 +3,7 @@
 
 from __author import __author__
 from __version import __version__
-import os
+import os, sys
 import argparse
 import requests as rq
 from tqdm import tqdm
@@ -113,7 +113,17 @@ def main():
                         action="store_true",
                         dest="silva_123",
                         help="Download Silva v123.")
-    args = parser.parse_args()
+
+    if len(sys.argv)==1:
+        parser.print_help()
+        parser.exit()
+
+    try:
+        args = parser.parse_args()
+    except SystemExit as error:
+        if error.code == 2:
+            parser.print_help()
+        parser.exit()
 
     if args.unite_ITS_02:
         download(download_directory=args.download_directory,
@@ -166,7 +176,6 @@ def main():
                  command="tar",
                  input_arg="-xf",
                  output_arg="--directory")
-
 
 if __name__ == '__main__':
     main()
