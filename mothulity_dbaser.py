@@ -91,6 +91,7 @@ def main():
                         dest="download_directory",
                         metavar="path/to/files",
                         default=".",
+                        nargs="?",
                         help="Directory where the database is downloaded.")
     parser.add_argument("--unite-ITS-02",
                         action="store_true",
