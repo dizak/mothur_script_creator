@@ -11,9 +11,19 @@ install:
   - conda info -a
 
 before_script:
-  - pwd
-  - echo $HOME
+  - MOTHULITY_PATH=$(pwd)
+  - export PATH=$MOTHULITY_PATH:$PATH
   - conda env create --file mothulity.yaml
   - source activate mothulity
-  - export PATH=$HOME/build/dizak/mothulity:$PATH
-  - which mothulity.py
+  - mkdir $HOME/db/silva.nr_v119 -p
+  - cd $HOME/db/silva.nr_v119
+  - wget http://www.mothur.org/w/images/2/27/Silva.nr_v119.tgz
+  - tar -xf Silva.nr_v119.tgz --directory $HOME/db/silva.nr_v119
+  - cd
+  - wget https://mothur.org/w/images/d/d6/MiSeqSOPData.zip
+  - unzip MiSeqSOPData.zip
+  - cd $MOTHULITY_PATH
+
+script:
+  - python -m doctest *py -v
+  - python -m unittest -v tests.tests
