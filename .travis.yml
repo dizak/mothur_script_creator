@@ -20,11 +20,10 @@ before_script:
 script:
   - python -m doctest *py -v
   - python -m unittest -v tests.tests
-  - mothulity_dbaser.py $HOME/db/ --unite-ITS-02
-  - rm -r $HOME/db/*
   - mothulity_dbaser.py $HOME/db/ --unite-ITS-s-02
   - rm -r $HOME/db/*
-  - mothulity_dbaser.py $HOME/db/ --silva-119
-  - rm -r $HOME/db/*
-  - mothulity_dbaser.py $HOME/db/ --silva-123
-  - rm -r $HOME/db/*
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
