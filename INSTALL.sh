@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Read CLI arguments
-while getopts "p:t:" opt; do
+while getopts ":p:t:" opt; do
   case $opt in
     p )
     DB_GEN_ANSWER='yes'
@@ -10,11 +10,25 @@ while getopts "p:t:" opt; do
     t )
     DB_TYPE_ANSWER=$OPTARG
       ;;
+    \? )
+    printf "Invalid option: -$OPTARG.
+    Execute script without any additional arguments to perform guided
+    installation.
+
+    To predefine installation parameters use following arguments:
+    - p <database_output_path>
+    - t <database_names>.
+    "
+    exit 1
+      ;;
   esac
-  done
+done
+
 # Define variables
 ## Good-bye message
-BYE="Thanks for installing mothulity. Hope it will save you as much work as possible! Report bugs and other issues at https://github.com/dizak/mothulity/issues"
+BYE="Thanks for installing mothulity.
+Hope it will save you as much work as possible!
+Report bugs and other issues at https://github.com/dizak/mothulity/issues"
 ## Where is ~/.bashrc
 BASH_RC=${HOME}/.bashrc
 ## Where is conda
