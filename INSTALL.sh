@@ -81,7 +81,7 @@ verify_path(){
     printf "$1 will be set as default database path.\n"
     break
   else
-    printf 'Cannot find path. Try again.\n'
+    printf "Given path doesn't exist.\n"
   fi
 }
 
@@ -89,6 +89,13 @@ verify_path(){
 
 _bye_msg="\nThanks for installing mothulity. Hope it will save you as much work as possible!
 Report bugs and other issues at https://github.com/dizak/mothulity/issues.\n"
+_db_choice_msg="\nWhich database would you like to download?
+[1] UNITE ITS 02
+[2] UNITE ITS s 02
+[3] Silva v102
+[4] Silva v119
+[5] Silva v123
+[6] Exit \n"
 # ~/.bashrc path
 _bashrc_path=${HOME}/.bashrc
 # mothulity path
@@ -118,14 +125,13 @@ while read _path_export; do
     printf "mothulity location added to PATH in your .bashrc.\n\n"
     break
   elif [ "${_path_export}" = 'no' ]; then
-    printf "You may wish to edit your .bashrc"
+    printf "You may wish to edit your .bashrc "
     printf "or export the mothulity location to PATH later.\n\n"
     break
   else
     printf "Unknown option. Type 'yes' or 'no'.\n"
   fi
 done
-
 
 ### Set up and test mothulity
 
@@ -150,7 +156,14 @@ cd ${_mothulity_path}
 python -m unittest -v tests.tests;
 
 ### Database download
-### NOT FINISHED
+
+### Setting up output path
+if [ ! -z "$_db_answer" ]; then
+  if [ ! -e "$_db_path" ]; then
+  printf "Predefined <database_output_path> doesn't exist.\n\n"
+  _db_answer=""
+  fi
+fi
 
 if [ -z "$_db_answer" ]; then
   printf "Mothulity needs databases to work its magic. Would you like to download them now?
@@ -159,7 +172,7 @@ if [ -z "$_db_answer" ]; then
     if [ "${_db_answer}" = 'yes' ]; then
       printf "Where would you like to download it?\n"
       while read _db_path; do
-        verify_path ${_db_path}
+        verify_path "${_db_path}"
       done
       break
     elif [ "${_db_answer}" = 'no' ]; then
@@ -169,4 +182,44 @@ if [ -z "$_db_answer" ]; then
   done
 fi
 
-echo "1234"
+### Setting up database type
+
+printf "${_db_choice_msg}"
+while read _db_type; do
+  case "${_db_type}" in
+    1)
+    ./mothulity_dbaser.py "${_db_path}" --unite-ITS-02 &&
+    ./mothulity.py . --set-align-database-path ""${_db_path}"/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path ""${_db_path}"/UNITEv6_sh_99.tax"
+    printf "${_db_choice_msg}"
+    ;;
+    2)
+    ./mothulity_dbaser.py "${_db_path}" --unite-ITS-s-02 &&
+    ./mothulity.py . --set-align-database-path ""${_db_path}"/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path ""${_db_path}"/UNITEv6_sh_97_s.tax"
+    printf "${_db_choice_msg}"
+    ;;
+    3)
+    ./mothulity_dbaser.py "${_db_path}" --silva-102 &&
+    printf 'Silva-102 is not handled automatically yet. It was NOT set as default database.\n'
+    printf "${_db_choice_msg}"
+    ;;
+    4)
+    echo "${_db_path}"
+    ./mothulity_dbaser.py ${_db_path} --silva-119 &&
+    ./mothulity.py . --set-align-database-path "${_db_path}/silva.nr_v119.align" --set-taxonomy-database-path "${_db_path}/silva.nr_v119.tax"
+    printf "${_db_choice_msg}"
+    ;;
+    5)
+    ./mothulity_dbaser.py ${_db_path} --silva-123 &&
+    ./mothulity.py . --set-align-database-path "${_db_path}/" --set-taxonomy-database-path "${_db_path}/"
+    ;;
+    6)
+    break
+    ;;
+    *)
+    printf 'No such database.\n'
+    ;;
+  esac
+done
+
+printf "${_bye_msg}"
+exit
