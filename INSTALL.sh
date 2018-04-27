@@ -38,39 +38,39 @@ download_database() {
   # $2 = ${_db_path}
   case $1 in
     1)
-    ./mothulity_dbaser.py $2 --unite-ITS-02 &&
-    ./mothulity.py . --set-align-database-path "$2/Unite_ITS_02/
-    UNITEv6_sh_99.fasta" --set-taxonomy-database-path "$2/UNITEv6_sh_99.tax"
-    break
+    ./mothulity_dbaser.py "${2}" --unite-ITS-02 &&
+    ./mothulity.py . --set-align-database-path "${2}/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path "${2}/UNITEv6_sh_99.tax"
+    printf "${_db_choice_msg}"
     ;;
     2)
-    ./mothulity_dbaser.py $2 --unite-ITS-s-02 &&
-    ./mothulity.py . --set-align-database-path "$2/Unite_ITS_s_02/
-    UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path "$2/UNITEv6_sh_97_s.tax"
-    break
+    ./mothulity_dbaser.py "${2}" --unite-ITS-s-02 &&
+    ./mothulity.py . --set-align-database-path "${2}/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path "${2}/UNITEv6_sh_97_s.tax"
+    printf "${_db_choice_msg}"
     ;;
     3)
-    ./mothulity_dbaser.py $2 --silva-102 &&
+    ./mothulity_dbaser.py "${2}" --silva-102 &&
     printf 'Silva-102 is not handled automatically yet.
-    It was NOT set as default database.'
-    break
+    It was NOT set as default database.\n'
+    printf "${_db_choice_msg}"
     ;;
     4)
-    ./mothulity_dbaser.py $2 --silva-119 &&
-    ./mothulity.py . --set-align-database-path "$2/silva.nr_v119.align"
-    --set-taxonomy-database-path "$2/silva.nr_v119.tax"
-    break
+    ./mothulity_dbaser.py "${2}" --silva-119 &&
+    ./mothulity.py . --set-align-database-path "${2}/silva.nr_v119.align" --set-taxonomy-database-path "${2}/silva.nr_v119.tax"
+    printf "${_db_choice_msg}"
     ;;
     5)
-    ./mothulity_dbaser.py $2 --silva-123 &&
-    ./mothulity.py . --set-align-database-path "$2/"
-    --set-taxonomy-database-path "$2/"
+    ./mothulity_dbaser.py "${2}" --silva-123 &&
+    ./mothulity.py . --set-align-database-path "${2}/" --set-taxonomy-database-path "${2}/"
+    printf "${_db_choice_msg}"
+    ;;
+    6)
     break
     ;;
     *)
-    echo 'No such database.'
+    echo 'No such database.\n'
     ;;
   esac
+
 }
 
 ### Verify path existance function
@@ -147,15 +147,13 @@ for i in "${_mothulity_path}/*.py"; do
   sed -i "s@/usr/bin/env python@${ENV_PYTHON}@g" $i;
 done
 # Run doc tests in all the python files
-for i in "${_mothulity_path}/*.py"; do
-  python -m doctest $i -v;
-done
+#for i in "${_mothulity_path}/*.py"; do
+#  python -m doctest $i;
+#done
 # Go to mothulity directory
-cd ${_mothulity_path}
+#cd ${_mothulity_path}
 # Run unittests
-python -m unittest -v tests.tests;
-
-### Database download
+#python -m unittest tests.tests;
 
 ### Setting up output path
 if [ ! -z "$_db_answer" ]; then
@@ -182,43 +180,9 @@ if [ -z "$_db_answer" ]; then
   done
 fi
 
-### Setting up database type
-
 printf "${_db_choice_msg}"
 while read _db_type; do
-  case "${_db_type}" in
-    1)
-    ./mothulity_dbaser.py "${_db_path}" --unite-ITS-02 &&
-    ./mothulity.py . --set-align-database-path ""${_db_path}"/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path ""${_db_path}"/UNITEv6_sh_99.tax"
-    printf "${_db_choice_msg}"
-    ;;
-    2)
-    ./mothulity_dbaser.py "${_db_path}" --unite-ITS-s-02 &&
-    ./mothulity.py . --set-align-database-path ""${_db_path}"/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path ""${_db_path}"/UNITEv6_sh_97_s.tax"
-    printf "${_db_choice_msg}"
-    ;;
-    3)
-    ./mothulity_dbaser.py "${_db_path}" --silva-102 &&
-    printf 'Silva-102 is not handled automatically yet. It was NOT set as default database.\n'
-    printf "${_db_choice_msg}"
-    ;;
-    4)
-    echo "${_db_path}"
-    ./mothulity_dbaser.py ${_db_path} --silva-119 &&
-    ./mothulity.py . --set-align-database-path "${_db_path}/silva.nr_v119.align" --set-taxonomy-database-path "${_db_path}/silva.nr_v119.tax"
-    printf "${_db_choice_msg}"
-    ;;
-    5)
-    ./mothulity_dbaser.py ${_db_path} --silva-123 &&
-    ./mothulity.py . --set-align-database-path "${_db_path}/" --set-taxonomy-database-path "${_db_path}/"
-    ;;
-    6)
-    break
-    ;;
-    *)
-    printf 'No such database.\n'
-    ;;
-  esac
+  download_database "${_db_type}" "${_db_path}"
 done
 
 printf "${_bye_msg}"
