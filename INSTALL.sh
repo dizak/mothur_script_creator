@@ -24,7 +24,14 @@ while getopts ":p:t:" opt; do
 
     To predefine installation parameters use following arguments:
     - p <database_output_path>
-    - t <database_names>.
+    - t <database_id>
+
+    Available databases [ID]:
+    [1] UNITE ITS 02
+    [2] UNITE ITS s 02
+    [3] Silva v102
+    [4] Silva v119
+    [5] Silva v123
     "
     exit 1
       ;;
@@ -67,7 +74,8 @@ download_database() {
     break
     ;;
     *)
-    echo 'No such database.\n'
+    printf "\nNo such database.\n"
+    printf "${_db_choice_msg}"
     ;;
   esac
 
@@ -180,7 +188,13 @@ if [ -z "$_db_answer" ]; then
   done
 fi
 
-printf "${_db_choice_msg}"
+if [ ! -z "$_db_type" ]; then
+    download_database "${_db_type}" "${_db_path}"
+else
+    printf "${_db_choice_msg}"
+fi
+
+
 while read _db_type; do
   download_database "${_db_type}" "${_db_path}"
 done
