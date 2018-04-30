@@ -5,10 +5,11 @@ set -o pipefail
 set -o nounset
 
 _db_answer=''
+_path_export=''
 
 ### Read CLI arguments
 
-while getopts ":p:t:" opt; do
+while getopts ":p:t:y" opt; do
   case $opt in
     p )
     _db_answer='yes'
@@ -16,6 +17,9 @@ while getopts ":p:t:" opt; do
       ;;
     t )
     _db_type=$OPTARG
+      ;;
+    y )
+    _path_export='yes'
       ;;
     \? )
     printf "Invalid option: -$OPTARG.
@@ -93,6 +97,19 @@ verify_path(){
   fi
 }
 
+### Add path to .bashrc function
+add_path(){
+  # $1 = _mothulity_path
+  # ~/.bashrc path
+  _bashrc_path=${HOME}/.bashrc
+  # Backup .bashrc before editing it
+  cp ${_bashrc_path} "${_bashrc_path}.bak"
+  # Add mothulity to PATH, source it and export PATH just for case
+  echo "export PATH=\"$1:\$PATH\"" >> ${_bashrc_path}
+  export PATH=$HOME/$1:$PATH
+  . ${_bashrc_path}
+  printf "mothulity location added to PATH in your .bashrc.\n\n"
+}
 ### Define variables
 
 _bye_msg="\nThanks for installing mothulity. Hope it will save you as much work as possible!
@@ -104,8 +121,6 @@ _db_choice_msg="\nWhich database would you like to download?
 [4] Silva v119
 [5] Silva v123
 [6] Exit \n"
-# ~/.bashrc path
-_bashrc_path=${HOME}/.bashrc
 # mothulity path
 cd $(dirname $0)
 _mothulity_path=$(pwd)
@@ -119,27 +134,24 @@ else
 fi
 
 ### Add mothulity to PATH in .bashrc
-
-printf "\nDo you wish the installer to add mothulity location to PATH in your ~/.bashrc?
+if [ ! -z "$_path_export" ]; then
+  add_path "${_mothulity_path}"
+else
+  printf "\nDo you wish the installer to add mothulity location to PATH in your ~/.bashrc?
 [yes|no]\n"
-while read _path_export; do
-  if [ "${_path_export}" = 'yes' ]; then
-    # Backup .bashrc before editing it
-    cp ${_bashrc_path} "${_bashrc_path}.bak"
-    # Add mothulity to PATH, source it and export PATH just for case
-    echo "export PATH=\"${_mothulity_path}:\$PATH\"" >> ${_bashrc_path}
-    export PATH=$HOME/${_mothulity_path}:$PATH
-    . ${_bashrc_path}
-    printf "mothulity location added to PATH in your .bashrc.\n\n"
-    break
-  elif [ "${_path_export}" = 'no' ]; then
-    printf "You may wish to edit your .bashrc "
-    printf "or export the mothulity location to PATH later.\n\n"
-    break
-  else
-    printf "Unknown option. Type 'yes' or 'no'.\n"
-  fi
-done
+  while read _path_export; do
+    if [ "${_path_export}" = 'yes' ]; then
+      add_path "${_mothulity_path}"
+      break
+    elif [ "${_path_export}" = 'no' ]; then
+      printf "You may wish to edit your .bashrc "
+      printf "or export the mothulity location to PATH later.\n\n"
+      break
+    else
+      printf "Unknown option. Type 'yes' or 'no'.\n"
+    fi
+  done
+fi
 
 ### Set up and test mothulity
 
