@@ -13,10 +13,11 @@ install:
 before_script:
   - mkdir $HOME/db/
   - ./INSTALL.sh -p $HOME/db/ -t 1 -y
-  - tail $HOME/.bashrc
+  - head mothulity.py
   - source $HOME/.bashrc
 
 script:
+  - source activate mothulity
   - python -m doctest *py -v
   - python -m unittest -v tests.tests
 
