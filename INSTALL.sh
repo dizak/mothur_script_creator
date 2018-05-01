@@ -207,9 +207,9 @@ else
 fi
 
 
-while read _db_type; do
-  download_database "${_db_type}" "${_db_path}"
-done
+# while read _db_type; do
+#   download_database "${_db_type}" "${_db_path}"
+# done
 
 printf "${_bye_msg}"
 exit
