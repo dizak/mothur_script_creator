@@ -51,28 +51,23 @@ download_database() {
     1)
     ./mothulity_dbaser.py "${2}" --unite-ITS-02 &&
     ./mothulity.py . --set-align-database-path "${2}/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path "${2}/UNITEv6_sh_99.tax"
-    printf "${_db_choice_msg}"
     ;;
     2)
     ./mothulity_dbaser.py "${2}" --unite-ITS-s-02 &&
     ./mothulity.py . --set-align-database-path "${2}/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path "${2}/UNITEv6_sh_97_s.tax"
-    printf "${_db_choice_msg}"
     ;;
     3)
     ./mothulity_dbaser.py "${2}" --silva-102 &&
     printf 'Silva-102 is not handled automatically yet.
     It was NOT set as default database.\n'
-    printf "${_db_choice_msg}"
     ;;
     4)
     ./mothulity_dbaser.py "${2}" --silva-119 &&
     ./mothulity.py . --set-align-database-path "${2}/silva.nr_v119.align" --set-taxonomy-database-path "${2}/silva.nr_v119.tax"
-    printf "${_db_choice_msg}"
     ;;
     5)
     ./mothulity_dbaser.py "${2}" --silva-123 &&
     ./mothulity.py . --set-align-database-path "${2}/" --set-taxonomy-database-path "${2}/"
-    printf "${_db_choice_msg}"
     ;;
     6)
     break
