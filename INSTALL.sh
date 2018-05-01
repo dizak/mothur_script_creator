@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# set -o errexit
-# set -o pipefail
-# set -o nounset
-
 _db_answer=''
 _path_export=''
 
@@ -80,7 +76,7 @@ download_database() {
 
 }
 
-### Verify path existance function
+### Verify path existence function
 
 verify_path(){
   # $1 = _db_path
@@ -152,8 +148,6 @@ fi
 
 # Create regular mothulity env from mothulity.yaml
 conda env create --file "${_mothulity_path}/mothulity.yaml" --force
-# Create no-mothur mothulity env from mothulity_sm.yaml
-conda env create --file "${_mothulity_path}/mothulity_sm.yaml" --force
 # Get python interpreter's location from the env
 . activate mothulity
 ENV_PYTHON=$(which python)
@@ -161,14 +155,6 @@ ENV_PYTHON=$(which python)
 for i in "${_mothulity_path}/*.py"; do
   sed -i "s@/usr/bin/env python@${ENV_PYTHON}@g" $i;
 done
-# Run doc tests in all the python files
-#for i in "${_mothulity_path}/*.py"; do
-#  python -m doctest $i;
-#done
-# Go to mothulity directory
-#cd ${_mothulity_path}
-# Run unittests
-#python -m unittest tests.tests;
 
 ### Setting up output path
 if [ ! -z "$_db_answer" ]; then
@@ -200,11 +186,6 @@ if [ ! -z "$_db_type" ]; then
 else
     printf "${_db_choice_msg}"
 fi
-
-
-# while read _db_type; do
-#   download_database "${_db_type}" "${_db_path}"
-# done
 
 printf "${_bye_msg}"
 exit
