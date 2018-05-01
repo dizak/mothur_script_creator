@@ -12,7 +12,7 @@ install:
 
 before_script:
   - mkdir $HOME/db/
-  - echo 'yes' | ./INSTALL.sh -p /$HOME/db/ -t 1
+  - ./INSTALL.sh -p $HOME/db/ -t 1 -y
 
 script:
   - python -m doctest *py -v
