@@ -25,7 +25,9 @@ while getopts ":p:t:y" opt; do
     To predefine installation parameters use following arguments:
     - p <database_output_path>
     - t <database_id>
-    - y     # add PATH to .bashrc
+    - y <add PATH to .bashrc>
+    Example:
+    $ ./INSTALL.sh -p /home/databases/ -t 2 -y
 
     Available databases [ID]:
     [1] UNITE ITS 02
