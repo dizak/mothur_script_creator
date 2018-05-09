@@ -14,6 +14,7 @@ before_script:
   - mkdir $HOME/db/
   - ./INSTALL.sh -p $HOME/db/ -t 1 -y
   - source $HOME/.bashrc
+  - cat mothulity.config
 
 script:
   - source activate mothulity
