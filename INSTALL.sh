@@ -66,7 +66,7 @@ download_database() {
     ;;
     5)
     ./mothulity_dbaser.py "${2}" --silva-123 &&
-    ./mothulity.py . --set-align-database-path "${2}/" --set-taxonomy-database-path "${2}/"
+    ./mothulity.py . --set-align-database-path "${2}/silva.nr_v123.align" --set-taxonomy-database-path "${2}/silva.nr_v123.tax"
     ;;
     6)
     break
