@@ -15,8 +15,6 @@ before_script:
 
 script:
   - ./INSTALL.sh -p $HOME/db/ -t 1 -y
-  - ls $HOME/db/
-  - cat mothulity.config
   - source $HOME/.bashrc
   - source activate mothulity
   - python -m doctest *py -v
