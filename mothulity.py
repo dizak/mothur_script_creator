@@ -633,7 +633,7 @@ def main():
                 time.sleep(2)
                 exit()
             if os.path.isfile(taxonomy_database_abs) is False:
-                print "No align database found in {}. Quitting...".format(taxonomy_database_abs)
+                print "No taxonomy database found in {}. Quitting...".format(taxonomy_database_abs)
                 time.sleep(2)
                 exit()
             shared_file = None
