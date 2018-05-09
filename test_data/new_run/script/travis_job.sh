@@ -56,4 +56,4 @@ count.groups(shared=current)'
 
 
 ###Call mothulity for the analysis part###
-mothulity.py /home/travis/build/dizak/mothulity/test_data/new_run/fastq/ -n analysis_travis_job --output-dir /home/travis/build/dizak/mothulity/test_data/new_run/fastq/ --analysis-only -r bash
+mothulity.py /home/travis/build/dizak/mothulity/test_data/new_run/fastq/ -n analysis_travis_job --output-dir /home/travis/build/dizak/mothulity/ --analysis-only -r bash
