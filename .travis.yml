@@ -20,7 +20,9 @@ script:
   - python -m doctest *py -v
   - python -m unittest -v tests.tests
   - mothulity.py test_data/new_run/fastq --dry-run -r bash -n travis_job
+  - mothulity.py test_data/analysis/shared_tax --dry-run -r bash -n analysis_travis_job --analysis-only
   - diff test_data/new_run/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
+  - diff test_data/analysis/script/analysis_travis_job.sh analysis_travis_job.sh --ignore-blank-lines --ignore-trailing-space
 
 notifications:
   email:
