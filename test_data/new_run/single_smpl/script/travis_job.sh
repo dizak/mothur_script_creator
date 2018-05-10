@@ -6,17 +6,17 @@
 #SBATCH --nodes=1
 #SBATCH --exclusive
 #SBATCH --exclude=gpu[1-8]
-  
+
 
 #Activate the env
 
 . activate mothulity
 
 ###Create *files file###
-mothulity_fc.py /home/dizak/Software/mothulity/test_data/ -o /home/dizak/Software/mothulity/test_data/travis_job.files
+mothulity_fc.py /home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/ -o /home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/travis_job.files
 
 ###Sequence preprocessing###
-mothur '#set.dir(input=/home/dizak/Software/mothulity/test_data/, output=/home/dizak/Software/mothulity/test_data/);
+mothur '#set.dir(input=/home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/, output=/home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/);
 set.current(processors=1);
 
 make.contigs(file=travis_job.files);
@@ -45,9 +45,9 @@ classify.seqs(fasta=current, count=current, reference=/home/dizak/db/silva.nr_v1
 taxonomy=/home/dizak/db/silva.nr_v119.tax, cutoff=80);
 
 remove.lineage(fasta=current, count=current, taxonomy=current, taxon=Chloroplast-Mitochondria-Eukaryota-unknown-Unknown);
-  
+
 cluster.split(fasta=current, count=current, taxonomy=current, cutoff=0.03, large=T, method=agc);
-  
+
 
 make.shared(list=current, count=current, label=0.03);
 classify.otu(list=current, count=current, taxonomy=current, label=0.03);
@@ -56,4 +56,4 @@ count.groups(shared=current)'
 
 
 ###Call mothulity for the analysis part###
-mothulity.py /home/dizak/Software/mothulity/test_data/ -n analysis_travis_job --output-dir /home/dizak/Software/mothulity/test_data/new_run/single_smpl/script/ --analysis-only -r bash 
+mothulity.py /home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/ -n analysis_travis_job --output-dir /home/travis/build/dizak/mothulity/ --analysis-only -r bash
