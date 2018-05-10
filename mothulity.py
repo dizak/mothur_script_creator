@@ -705,10 +705,11 @@ def main():
                               html_type="summary")
         raref_html = parse_html("alpha/{}.raref.html".format(args.job_name),
                                 html_type="rarefaction")
-        nmds_jc_html = parse_html("beta/{}.jclass.nmds.html".format(args.job_name),
-                                  html_type="nmds")
-        nmds_th_html = parse_html("beta/{}.thetayc.nmds.html".format(args.job_name),
-                                  html_type="nmds")
+        if sampl_num > 1:
+            nmds_jc_html = parse_html("beta/{}.jclass.nmds.html".format(args.job_name),
+                                      html_type="nmds")
+            nmds_th_html = parse_html("beta/{}.thetayc.nmds.html".format(args.job_name),
+                                      html_type="nmds")
         with open(logfile_name, "a") as fin:
             fin.write("\nTemplate used:\n\n{}".format(loaded_template))
 # Pass all the variables to template and render to str.
