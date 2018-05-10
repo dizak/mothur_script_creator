@@ -6,17 +6,17 @@
 #SBATCH --nodes=1
 #SBATCH --exclusive
 #SBATCH --exclude=gpu[1-8]
-
+  
 
 #Activate the env
 
 . activate mothulity
 
 ###Create *files file###
-mothulity_fc.py /home/travis/build/dizak/mothulity/test_data/new_run/fastq/ -o /home/travis/build/dizak/mothulity/test_data/new_run/fastq/travis_job.files
+mothulity_fc.py /home/dizak/Software/mothulity/test_data/ -o /home/dizak/Software/mothulity/test_data/travis_job.files
 
 ###Sequence preprocessing###
-mothur '#set.dir(input=/home/travis/build/dizak/mothulity/test_data/new_run/fastq/, output=/home/travis/build/dizak/mothulity/test_data/new_run/fastq/);
+mothur '#set.dir(input=/home/dizak/Software/mothulity/test_data/, output=/home/dizak/Software/mothulity/test_data/);
 set.current(processors=1);
 
 make.contigs(file=travis_job.files);
@@ -29,7 +29,7 @@ summary.seqs(fasta=current);
 unique.seqs(fasta=current);
 count.seqs(name=current, group=current);
 
-align.seqs(fasta=current, reference=/home/travis/db/Unite_ITS_02/UNITEv6_sh_99.fasta);
+align.seqs(fasta=current, reference=/home/dizak/db/silva.nr_v119.align);
 summary.seqs(fasta=current, count=current);
 screen.seqs(fasta=current, count=current, summary=current,  optimize=start-end, criteria=95);
 summary.seqs(fasta=current, count=current);
@@ -41,13 +41,13 @@ pre.cluster(fasta=current, count=current, diffs=2);
 chimera.uchime(fasta=current, count=current, dereplicate=T);
 remove.seqs(fasta=current, accnos=current);
 summary.seqs(fasta=current, count=current);
-classify.seqs(fasta=current, count=current, reference=/home/travis/db/Unite_ITS_02/UNITEv6_sh_99.fasta,
-taxonomy=/home/travis/db/Unite_ITS_02/UNITEv6_sh_99.tax, cutoff=80);
+classify.seqs(fasta=current, count=current, reference=/home/dizak/db/silva.nr_v119.align,
+taxonomy=/home/dizak/db/silva.nr_v119.tax, cutoff=80);
 
 remove.lineage(fasta=current, count=current, taxonomy=current, taxon=Chloroplast-Mitochondria-Eukaryota-unknown-Unknown);
-
+  
 cluster.split(fasta=current, count=current, taxonomy=current, cutoff=0.03, large=T, method=agc);
-
+  
 
 make.shared(list=current, count=current, label=0.03);
 classify.otu(list=current, count=current, taxonomy=current, label=0.03);
@@ -56,4 +56,4 @@ count.groups(shared=current)'
 
 
 ###Call mothulity for the analysis part###
-mothulity.py /home/travis/build/dizak/mothulity/test_data/new_run/fastq/ -n analysis_travis_job --output-dir /home/travis/build/dizak/mothulity/ --analysis-only -r bash
+mothulity.py /home/dizak/Software/mothulity/test_data/ -n analysis_travis_job --output-dir /home/dizak/Software/mothulity/test_data/new_run/single_smpl/script/ --analysis-only -r bash 

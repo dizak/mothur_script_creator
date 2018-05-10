@@ -14,15 +14,15 @@
 
 #Create directories and shorten shared file name
 
-mkdir -p /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/analysis/OTU/alpha /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/analysis/OTU/beta
-cp /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/travis_job.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.agc.unique_list.shared /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/analysis/OTU/analysis_travis_job.shared
+mkdir -p /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/analysis/OTU/alpha /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/analysis/OTU/beta
+cp /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/travis_job.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.agc.unique_list.shared /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/analysis/OTU/analysis_travis_job.shared
 
-cp /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/travis_job.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.agc.unique_list.0.03.cons.tax.summary /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/analysis/OTU/alpha/analysis_travis_job.tax.summary
+cp /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/travis_job.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.agc.unique_list.0.03.cons.tax.summary /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/analysis/OTU/alpha/analysis_travis_job.tax.summary
 
 
 #Go to subdirectory, and subsample shared file
 
-cd /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/analysis/OTU
+cd /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/analysis/OTU
 mothur '#set.current(processors=1, shared=analysis_travis_job.shared); sub.sample(shared=current)'
 
 #Copy non-subsampled shared file to alpha directory and subsampled shared file to beta directory
@@ -71,7 +71,7 @@ mothulity_draw.py analysis_travis_job.0.03.subsample.thetayc.0.03.square.nmds.ax
 cd ../
 
 #Render html output
-mothulity.py /home/travis/build/dizak/mothulity/test_data/analysis/shared_tax/ --render-html --job-name analysis_travis_job
+mothulity.py /home/travis/build/dizak/mothulity/test_data/analysis/mltp_smpl/shared_tax/ --render-html --job-name analysis_travis_job
 
 #Go to project's root directory
 
