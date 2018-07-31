@@ -7,7 +7,7 @@ import sys
 import os
 import shelve
 from glob import glob
-import ConfigParser
+import configparser
 
 
 def get_dir_path(file_name=""):
@@ -87,7 +87,7 @@ def set_config(filename,
                values,
                clean=False):
     if os.path.exists(filename):
-        config = ConfigParser.SafeConfigParser()
+        config = configparser.ConfigParser()
         config.read(os.path.abspath(filename))
         if clean and section in config.sections():
             config.remove_section(section)
@@ -95,7 +95,7 @@ def set_config(filename,
             config.add_section(section)
         for o, v in zip(options, values):
             config.set(section, o, v)
-        with open(filename, "wb") as fout:
+        with open(filename, "w") as fout:
             config.write(fout)
     else:
         return None
