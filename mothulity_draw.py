@@ -5,7 +5,7 @@ from __author import __author__
 from __version import __version__
 from utilities import get_dir_path
 import os
-import ConfigParser
+import configparser
 import argparse
 from Bio import Phylo as ph
 import matplotlib
@@ -479,7 +479,7 @@ def main():
     args = parser.parse_args()
 
     config_path_abs = get_dir_path("mothulity.config")
-    config = ConfigParser.SafeConfigParser()
+    config = configparser.ConfigParser()
     config.read(config_path_abs)
     datatables_css = config.get("css", "datatables")
     datatables_js = get_dir_path(config.get("js", "datatables"))
