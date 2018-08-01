@@ -105,8 +105,11 @@ def main():
                                      description="creates mothur-suitable\
                                                     <.files> file just upon the\
                                                     input file names. Removes\
-                                                    <-> from file names",
-                                     version="1.0.1")
+                                                    <-> from file names")
+    parser.add_argument("-v",
+                        "--version",
+                        action="version",
+                        version=__version__)
     parser.add_argument(action="store",
                         dest="files_directory",
                         metavar="path/to/files",

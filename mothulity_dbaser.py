@@ -85,8 +85,11 @@ def main():
     parser = argparse.ArgumentParser(prog="mothulity_dbaser",
                                      usage="mothulity_dbaser [OPTION]",
                                      description="downloads mothur-suitable\
-                                     databases",
-                                     version=__version__)
+                                     databases")
+    parser.add_argument("-v",
+                        "--version",
+                        action="version",
+                        version=__version__)
     parser.add_argument(action="store",
                         dest="download_directory",
                         metavar="path/to/files",

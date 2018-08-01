@@ -428,8 +428,11 @@ def main():
     parser = argparse.ArgumentParser(prog="mothulity_draw",
                                      usage="mothulity_draw [OPTION]",
                                      description="draws plots from\
-                                     mothur-generated files.",
-                                     version="0.9.4")
+                                     mothur-generated files.")
+    parser.add_argument("-v",
+                        "--version",
+                        action="version",
+                        version=__version__)
     parser.add_argument(action="store",
                         dest="input_file_name",
                         metavar="path/to/input_file",
