@@ -1,4 +1,5 @@
 dependencies:
+  - cython
   - requests
   - tqdm
   - Biopython
