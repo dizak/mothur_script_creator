@@ -23,7 +23,7 @@ def names_sanitizer(files_directory,
     Examples
     -------
     >>> import os
-    >>> open("./tests/test-test-test.test", "w").close()
+    >>> open("./tests/test-test-test.test", "wb").close()
     >>> names_sanitizer("./tests", "-")
     >>> "testtesttest.test" in os.listdir("./tests/")
     True

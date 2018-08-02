@@ -90,7 +90,7 @@ def save_template(out_file_name,
     template_rendered: unicode
         Temlplate rendered to unicode object.
     """
-    with open(out_file_name, "w") as fout:
+    with open(out_file_name, "wb") as fout:
         fout.write(template_rendered.encode("utf-8"))
 
 
@@ -714,7 +714,7 @@ def main():
                                       html_type="nmds")
             nmds_th_html = parse_html("beta/{}.thetayc.nmds.html".format(args.job_name),
                                       html_type="nmds")
-        with open(logfile_name, "a") as fin:
+        with open(logfile_name, "ab") as fin:
             fin.write("\nTemplate used:\n\n{}".format(loaded_template))
 # Pass all the variables to template and render to str.
     template_vars = {"files_directory": files_directory_abs,

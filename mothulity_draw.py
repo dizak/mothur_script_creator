@@ -71,7 +71,7 @@ def draw_rarefaction(input_file_name,
     plt.title(title)
     plt.ylabel(ylabel)
     plt.xlabel(xlabel)
-    with open(output_file_name, "w") as fout:
+    with open(output_file_name, "wb") as fout:
         fout.write(mpld3.fig_to_html(fig))
 
 
@@ -230,7 +230,7 @@ def summary2html(input_file_name,
     html_str = "{0}{1}{2}".format(css_link,
                                   html_df,
                                   js_str)
-    with open(output_file_name, "w") as fout:
+    with open(output_file_name, "wb") as fout:
         fout.write(html_str)
 
 
