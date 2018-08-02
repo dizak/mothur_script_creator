@@ -1,8 +1,11 @@
+channels:
+  - defaults
+  - bioconda
 dependencies:
   - cython
   - requests
   - tqdm
-  - Biopython
+  - biopython
   - matplotlib
   - mpld3
   - numpy
@@ -10,5 +13,7 @@ dependencies:
   - seaborn
   - lxml
   - beautifulsoup4
+  - mothur
+  - krona
   - pip:
     - headnode-notifier
