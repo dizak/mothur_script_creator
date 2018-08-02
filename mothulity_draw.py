@@ -72,7 +72,7 @@ def draw_rarefaction(input_file_name,
     plt.ylabel(ylabel)
     plt.xlabel(xlabel)
     with open(output_file_name, "wb") as fout:
-        fout.write(mpld3.fig_to_html(fig))
+        fout.write(mpld3.fig_to_html(fig).encode('utf-8'))
 
 
 def draw_heatmap(input_file_name,
@@ -181,7 +181,7 @@ def draw_scatter(input_file_name,
     """
     df = read_csv(input_file_name,
                   sep=sep)
-    fig, ax = plt.subplots(subplot_kw=dict(axisbg=backgroud_color))
+    fig, ax = plt.subplots()
     scatter = ax.scatter(np.array(df[axis1_col]),
                          np.array(df[axis2_col]),
                          c=np.random.random(size=len(df)),
