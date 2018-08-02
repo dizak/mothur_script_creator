@@ -3,7 +3,6 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - cython
   - requests
   - tqdm
   - biopython
@@ -14,7 +13,8 @@ dependencies:
   - seaborn
   - lxml
   - beautifulsoup4
-  - mothur
+  - mothur=1.38.1.1=boost1.60_0
+  - vsearch
   - krona
   - pip:
     - headnode-notifier
