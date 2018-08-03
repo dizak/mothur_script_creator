@@ -8,7 +8,7 @@ dependencies:
   - biopython
   - matplotlib
   - mpld3
-  - numpy
+  - numpy=1.13.3
   - pandas
   - seaborn
   - lxml
