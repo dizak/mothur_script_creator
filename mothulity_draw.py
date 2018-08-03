@@ -229,7 +229,7 @@ def summary2html(input_file_name,
                          index=False)
     html_str = "{0}{1}{2}".format(css_link,
                                   html_df,
-                                  js_str)
+                                  js_str).encode("utf-8")
     with open(output_file_name, "wb") as fout:
         fout.write(html_str)
 
