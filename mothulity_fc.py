@@ -87,7 +87,7 @@ def left_n_right_generator(files_directory,
     files_list = os.listdir(files_directory)
     files_list = [i for i in files_list if files_extension == i.split(".")[-1]]
     sample_names_list = [i.split(split_sign)[0] for i in files_list]
-    sample_names_list = list(set(sample_names_list))
+    sample_names_list = sorted(list(set(sample_names_list)))
     for i in sample_names_list:
         for ii in files_list:
             if i == ii.split(split_sign)[0] and left_reads_sign in ii:
