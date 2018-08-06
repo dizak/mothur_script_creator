@@ -17,10 +17,10 @@ before_script:
   - mkdir $HOME/db/
 
 script:
+  - echo '  - python=${CONDA_PY}'
   - ./INSTALL.sh -p $HOME/db/ -t 1 -y
   - source $HOME/.bashrc
   - source activate mothulity
-  - conda install python=${CONDA_PY}
   - python -m doctest *py -v
   - python -m unittest -v tests.tests
   - mothulity.py test_data/new_run/mltp_smpl/fastq --dry-run -r bash -n travis_job
