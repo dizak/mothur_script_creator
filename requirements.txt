@@ -1,0 +1,11 @@
+requests
+tqdm
+biopython
+matplotlib
+mpld3
+seaborn
+lxml
+numpy<=1.13.3
+pandas
+jinja2
+beautifulsoup4
