@@ -21,9 +21,9 @@ setup(
         "mothulity_draw.py",
         "mothulity_dbaser.py",
         "mothulity_fc.py",
-     ]
+     ],
     keywords=[
-        ",mothur",
+        "mothur",
         "diversity",
         "microbial-communities",
         "microbial-ecology",
