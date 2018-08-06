@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 
 
+from __future__ import print_function
+import six
 from __author import __author__
 from __version import __version__
 import os

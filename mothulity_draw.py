@@ -1,11 +1,13 @@
 #! /usr/bin/env python
 
 
+from __future__ import print_function
+import six
 from __author import __author__
 from __version import __version__
 from utilities import get_dir_path
 import os
-import configparser
+from six.moves import configparser
 import argparse
 from Bio import Phylo as ph
 import matplotlib

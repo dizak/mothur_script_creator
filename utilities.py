@@ -1,13 +1,15 @@
 #! /usr/bin/env python
 
 
+from __future__ import print_function
+import six
 from __author import __author__
 from __version import __version__
 import sys
 import os
 import shelve
 from glob import glob
-import configparser
+from six.moves import configparser
 
 
 def get_dir_path(file_name=""):

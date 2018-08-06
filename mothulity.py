@@ -1,5 +1,8 @@
 #! /usr/bin/env python
 
+
+from __future__ import print_function
+import six
 from __author import __author__
 from __version import __version__
 import utilities
@@ -11,7 +14,7 @@ from tqdm import tqdm
 import os
 import sys
 import glob
-import configparser
+from six.moves import configparser
 import shelve
 import pandas as pd
 from bs4 import BeautifulSoup as bs
