@@ -17,7 +17,7 @@ before_script:
   - mkdir $HOME/db/
 
 script:
-  - echo '  - python=${CONDA_PY}'
+  - echo '  - python=${CONDA_PY}' >> mothulity.yaml
   - ./INSTALL.sh -p $HOME/db/ -t 1 -y
   - source $HOME/.bashrc
   - source activate mothulity
