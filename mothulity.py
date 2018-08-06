@@ -504,9 +504,9 @@ def main():
         else:
             print("Failed to find or open {} config file. Using default.".format(args.set_config_path))
             time.sleep(2)
-            config_path_abs = get_dir_path("mothulity.config")
+            config_path_abs = utilities.get_dir_path("mothulity.config")
     else:
-        config_path_abs = get_dir_path("mothulity.config")
+        config_path_abs = utilities.get_dir_path("mothulity.config")
     config = configparser.ConfigParser()
     config.read(config_path_abs)
 # Set config file options.
