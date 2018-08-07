@@ -6,6 +6,7 @@ mpld3
 numpy<=1.13.3
 pandas
 seaborn
+jinja2
 lxml
 beautifulsoup4
 headnode-notifier
