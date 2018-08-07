@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     author_email="dariusz.izak@ibb.waw.pl",
     url="https://github.com/dizak/mothulity",
-    license="MIT",
+    license="BSD",
     py_modules=["utilities"],
     scripts=[
         "mothulity.py",
@@ -36,6 +36,7 @@ setup(
         ""
     ],
     classifiers=[
+        "License :: OSI Approved :: BSD License",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
