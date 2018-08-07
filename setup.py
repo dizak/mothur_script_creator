@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
 from mothulity import __version__ as VERSION
 from mothulity import __author__ as AUTHOR
 
@@ -8,10 +8,11 @@ setup(
     version=VERSION,
     author=AUTHOR,
     packages=find_packages(exclude=["*test*"]),
+    include_package_data=True,
     install_requires=open("requirements.txt").readlines(),
     description="Easy-to-use tool facilitating work with Mothur.",
     long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
+    # long_description_content_type="text/markdown",
     author_email="dariusz.izak@ibb.waw.pl",
     url="https://github.com/dizak/mothulity",
     license="BSD",
