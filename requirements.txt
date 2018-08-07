@@ -1,11 +1,11 @@
 requests
 tqdm
 biopython
-matplotlib
+matplotlib<=2.0.0
 mpld3
-seaborn
-lxml
 numpy<=1.13.3
 pandas
-jinja2
+seaborn
+lxml
 beautifulsoup4
+headnode-notifier
