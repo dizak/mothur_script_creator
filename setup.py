@@ -11,8 +11,28 @@ setup(
     packages=find_packages(exclude=["*test*"]),
     include_package_data=True,
     data_files=[
-        ("bin", ["mothulity.config"])
-    ],# NOTE: tells where files should be installed - see https://docs.python.org/3/distutils/setupscript.html#installing-additional-files
+        ("bin", ["mothulity.config"]),
+        ("bin/bin/mothur/blast/bin", [
+            "bin/mothur/blast/bin/bl2seq",
+            "bin/mothur/blast/bin/blastall",
+            "bin/mothur/blast/bin/blastclust",
+            "bin/mothur/blast/bin/blastpgp",
+            "bin/mothur/blast/bin/copymat",
+            "bin/mothur/blast/bin/fastacmd",
+            "bin/mothur/blast/bin/formatdb",
+            "bin/mothur/blast/bin/formatrpsdb",
+            "bin/mothur/blast/bin/impala",
+            "bin/mothur/blast/bin/makemat",
+            "bin/mothur/blast/bin/megablast",
+            "bin/mothur/blast/bin/rpsblast",
+            "bin/mothur/blast/bin/seedtop",
+        ]),
+        ("bin/bin/mothur", [
+            "bin/mothur/mothur",
+            "bin/mothur/uchime",
+            "bin/mothur/vsearch",
+        ]),
+    ],
     install_requires=open("requirements.txt").readlines(),
     description="Easy-to-use tool facilitating work with Mothur.",
     long_description=open("README.md").read(),
