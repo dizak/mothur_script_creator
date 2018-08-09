@@ -504,9 +504,9 @@ def main():
         else:
             print("Failed to find or open {} config file. Using default.".format(args.set_config_path))
             time.sleep(2)
-            config_path_abs = utilities.get_dir_path("mothulity.config")
+            config_path_abs = utilities.get_dir_path("../config/mothulity.config")
     else:
-        config_path_abs = utilities.get_dir_path("mothulity.config")
+        config_path_abs = utilities.get_dir_path("../config/mothulity.config")
     config = configparser.ConfigParser()
     config.read(config_path_abs)
 # Set config file options.
@@ -550,8 +550,8 @@ def main():
         print("CSS links not found in config file! Output will not display properly!")
         time.sleep(2)
     try:
-        datatables_js = utilities.get_dir_path(config.get("js", "datatables"))
-        slideshow_js = utilities.get_dir_path(config.get("js", "slideshow"))
+        datatables_js = utilities.get_dir_path("../js/{}".format(config.get("js", "datatables")))
+        slideshow_js = utilities.get_dir_path("../js/{}".format(config.get("js", "slideshow")))
     except Exception as e:
         print("Javascript links not found in config file. Output will not display properly!")
         time.sleep(2)
@@ -687,7 +687,7 @@ def main():
 # Rest of the variables must explicitly set to None or zero.
     if all([args.analysis_only, args.render_html]) is False:
         loaded_template = load_template_file(preproc_template,
-                                             searchpath=utilities.get_dir_path())
+                                             searchpath=utilities.get_dir_path("../templates"))
         label = args.label
         with open(logfile_name, "a") as fin:
             fin.write("\nTemplate used:\n\n{}".format(loaded_template))
@@ -695,7 +695,7 @@ def main():
 # Label, number of samples and junk groups must be read from shared file.
     if args.analysis_only is True:
         loaded_template = load_template_file(analysis_template,
-                                             searchpath=utilities.get_dir_path())
+                                             searchpath=utilities.get_dir_path("../templates"))
         sampl_num = shared_info["samples_number"]
         label = shared_info["label"]
         junk_grps = shared_info["junk_grps"]
@@ -718,7 +718,7 @@ def main():
 # Output-html varialbles must explicitly set.
     if args.render_html is True:
         loaded_template = load_template_file(output_template,
-                                             searchpath=utilities.get_dir_path())
+                                             searchpath=utilities.get_dir_path("../templates"))
         label = shared_info["label"]
         junk_grps = shared_info["junk_grps"]
         sampl_num = shared_info["samples_number"]
