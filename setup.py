@@ -4,9 +4,9 @@ from glob import glob
 from mothulity import __version__ as VERSION
 from mothulity import __author__ as AUTHOR
 
-j2_files = glob("*j2")
-js_files = glob("*js")
-config_files = glob("*config")
+j2_files = glob("templates/*j2")
+js_files = glob("js/*js")
+config_files = glob("config/*config")
 blast_bin_files = glob("bin/mothur/blast/bin/*")
 
 
@@ -17,7 +17,9 @@ setup(
     packages=find_packages(exclude=["*test*"]),
     include_package_data=True,
     data_files=[
-        ("bin", j2_files + js_files + config_files),
+        ("templates", j2_files),
+        ("js", js_files),
+        ("config", config_files),
         ("bin/blast/bin", blast_bin_files),
         ("bin", [
             "bin/mothur/mothur",
