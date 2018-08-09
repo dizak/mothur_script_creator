@@ -3,4 +3,5 @@ include LICENSE
 include README.md
 include mothulity.config
 include *j2
+include *js
 recursive-include bin/mothur/ *
