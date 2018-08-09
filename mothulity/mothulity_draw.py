@@ -3,8 +3,8 @@
 
 from __future__ import print_function
 import six
-from __author import __author__
-from __version import __version__
+from __init__ import __author__
+from __init__ import __version__
 from utilities import get_dir_path
 import os
 from six.moves import configparser
