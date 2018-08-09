@@ -1,7 +1,13 @@
 from setuptools import find_packages
 from distutils.core import setup
+from glob import glob
 from mothulity import __version__ as VERSION
 from mothulity import __author__ as AUTHOR
+
+j2_files = glob("*j2")
+js_files = glob("*js")
+config_files = glob("*config")
+blast_bin_files = glob("bin/mothur/blast/bin/*")
 
 
 setup(
@@ -11,27 +17,8 @@ setup(
     packages=find_packages(exclude=["*test*"]),
     include_package_data=True,
     data_files=[
-        ("bin", [
-            "mothulity.config",
-            "preproc_template.sh.j2",
-            "output_template.html.j2",
-            "analysis_template.sh.j2",
-            ]),
-        ("bin/blast/bin", [
-            "bin/mothur/blast/bin/bl2seq",
-            "bin/mothur/blast/bin/blastall",
-            "bin/mothur/blast/bin/blastclust",
-            "bin/mothur/blast/bin/blastpgp",
-            "bin/mothur/blast/bin/copymat",
-            "bin/mothur/blast/bin/fastacmd",
-            "bin/mothur/blast/bin/formatdb",
-            "bin/mothur/blast/bin/formatrpsdb",
-            "bin/mothur/blast/bin/impala",
-            "bin/mothur/blast/bin/makemat",
-            "bin/mothur/blast/bin/megablast",
-            "bin/mothur/blast/bin/rpsblast",
-            "bin/mothur/blast/bin/seedtop",
-        ]),
+        ("bin", j2_files + js_files + config_files),
+        ("bin/blast/bin", blast_bin_files),
         ("bin", [
             "bin/mothur/mothur",
             "bin/mothur/uchime",
