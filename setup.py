@@ -12,7 +12,7 @@ setup(
     include_package_data=True,
     data_files=[
         ("bin", ["mothulity.config"]),
-        ("bin/bin/mothur/blast/bin", [
+        ("bin/mothur/blast/bin", [
             "bin/mothur/blast/bin/bl2seq",
             "bin/mothur/blast/bin/blastall",
             "bin/mothur/blast/bin/blastclust",
@@ -27,7 +27,7 @@ setup(
             "bin/mothur/blast/bin/rpsblast",
             "bin/mothur/blast/bin/seedtop",
         ]),
-        ("bin/bin/mothur", [
+        ("bin", [
             "bin/mothur/mothur",
             "bin/mothur/uchime",
             "bin/mothur/vsearch",
