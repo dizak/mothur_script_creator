@@ -8,7 +8,7 @@ python:
   - "3.6"
 
 install:
-  setup.py install
+  - python setup.py install
 
 before_script:
   - mkdir $HOME/db/
