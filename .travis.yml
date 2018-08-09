@@ -8,7 +8,8 @@ python:
   - "3.6"
 
 install:
-  - python setup.py install
+  - python setup.py sdist
+  - pip install dist/mothulity-1.5.0.tar.g
 
 before_script:
   - mkdir $HOME/db/
