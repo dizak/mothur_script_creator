@@ -15,14 +15,12 @@ install:
   - echo "  - python=${CONDA_PY}" >> mothulity.yaml
   - conda env create -f mothulity.yaml -n mothulity
   - source activate mothulity
-  - echo 'PATH="'${HOME}'/build/mothulity/mothulity:$PATH"'
-  - echo 'PATH="'${HOME}'/build/mothulity/mothulity:$PATH"' >> $HOME/.bashrc
+  - export PATH=$HOME/build/mothulity/mothulity:$PATH
 
 before_script:
   - mkdir $HOME/db/
 
 script:
-  - source $HOME/.bashrc
   - python -m doctest mothulity/mothulity.py mothulity/mothulity_draw.py mothulity/mothulity_dbaser.py mothulity/mothulity_fc.py -v
   - python -m unittest -v tests.tests
   - mothulity.py test_data/new_run/mltp_smpl/fastq --dry-run -r bash -n travis_job
