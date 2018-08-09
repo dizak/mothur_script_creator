@@ -34,16 +34,12 @@ setup(
     author_email="dariusz.izak@ibb.waw.pl",
     url="https://github.com/dizak/mothulity",
     license="BSD",
-    py_modules=[
-        "__author",
-        "__version",
-        "utilities",
-    ],
+    py_modules=["mothulity/utilities"],
     scripts=[
-        "mothulity.py",
-        "mothulity_draw.py",
-        "mothulity_dbaser.py",
-        "mothulity_fc.py",
+        "mothulity/mothulity.py",
+        "mothulity/mothulity_draw.py",
+        "mothulity/mothulity_dbaser.py",
+        "mothulity/mothulity_fc.py",
      ],
     keywords=[
         "mothur",
