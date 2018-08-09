@@ -4,7 +4,7 @@ import six
 import unittest
 from six.moves import configparser
 import subprocess as sp
-import utilities
+from mothulity import utilities
 
 
 class PathTests(unittest.TestCase):
