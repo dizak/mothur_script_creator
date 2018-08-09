@@ -1,22 +1,14 @@
 language: python
 
-os: linux
-
-env:
-  - CONDA_PY=2
-  - CONDA_PY=3
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
 
 install:
-  - wget https://repo.continuum.io/miniconda/Miniconda${CONDA_PY}-latest-Linux-x86_64.sh
-  - bash Miniconda${CONDA_PY}-latest-Linux-x86_64.sh -b -p $HOME/miniconda${CONDA_PY}
-  - export PATH=$HOME/miniconda${CONDA_PY}/bin:$PATH
-  - conda config --set always_yes yes --set changeps1 no
-  - conda info -a
-  - echo "  - python=${CONDA_PY}" >> mothulity.yaml
-  - conda env create -f mothulity.yaml -n mothulity
-  - source activate mothulity
-  - pwd
-  - export PATH=$HOME/build/dizak/mothulity/mothulity:$PATH
+  setup.py install
 
 before_script:
   - mkdir $HOME/db/
