@@ -15,7 +15,7 @@ install:
   - echo "  - python=${CONDA_PY}" >> mothulity.yaml
   - conda env create -f mothulity.yaml -n mothulity
   - source activate mothulity
-  - echo 'PATH="'${HOME}'/build/mothulity/mothulity:$PATH"'
+  - echo 'PATH="'${HOME}'/build/mothulity/mothulity:$PATH"' >> $HOME/.bashrc
   - source $HOME/.bashrc
 
 before_script:
