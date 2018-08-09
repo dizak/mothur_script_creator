@@ -11,8 +11,13 @@ setup(
     packages=find_packages(exclude=["*test*"]),
     include_package_data=True,
     data_files=[
-        ("bin", ["mothulity.config"]),
-        ("bin/mothur/blast/bin", [
+        ("bin", [
+            "mothulity.config",
+            "preproc_template.sh.j2",
+            "output_template.html.j2",
+            "analysis_template.sh.j2",
+            ]),
+        ("bin/blast/bin", [
             "bin/mothur/blast/bin/bl2seq",
             "bin/mothur/blast/bin/blastall",
             "bin/mothur/blast/bin/blastclust",
