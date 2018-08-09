@@ -15,7 +15,8 @@ install:
   - echo "  - python=${CONDA_PY}" >> mothulity.yaml
   - conda env create -f mothulity.yaml -n mothulity
   - source activate mothulity
-  - export PATH=$HOME/build/mothulity/mothulity:$PATH
+  - pwd
+  - export PATH=$HOME/build/dizak/mothulity/mothulity:$PATH
 
 before_script:
   - mkdir $HOME/db/
