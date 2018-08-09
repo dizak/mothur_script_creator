@@ -13,7 +13,7 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda info -a
   - echo "  - python=${CONDA_PY}" >> mothulity.yaml
-  - conda env create -f mothulity.yaml
+  - conda env create -f mothulity.yaml -n mothulity
   - source activate mothulity
   - echo 'PATH="'${HOME}'/build/mothulity/mothulity:$PATH"'
   - source $HOME/.bashrc
