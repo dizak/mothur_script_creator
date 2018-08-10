@@ -17,9 +17,11 @@ import pandas as pd
 from bs4 import BeautifulSoup as bs
 try:
     from mothulity import __version__
-    from mothulity import utilities as mut
 except ImportError:
     __version__ = "development"
+try:
+    from mothulity import utilities as mut
+except ImportError:
     import utilities as mut
 
 

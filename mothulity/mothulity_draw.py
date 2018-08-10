@@ -22,11 +22,12 @@ from lxml import etree as et
 import pandas as pd
 try:
     from mothulity import __version__
-    from mothulity import utilities as mut
 except ImportError:
     __version__ = "development"
+try:
+    from mothulity import utilities as mut
+except ImportError:
     import utilities as mut
-
 
 def draw_rarefaction(input_file_name,
                      output_file_name,
