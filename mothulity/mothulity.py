@@ -3,7 +3,7 @@
 
 from __future__ import print_function
 import six
-import utilities
+import mothulity.utilities as mut
 import time
 import jinja2 as jj2
 import argparse
@@ -505,21 +505,21 @@ def main():
         else:
             print("Failed to find or open {} config file. Using default.".format(args.set_config_path))
             time.sleep(2)
-            config_path_abs = utilities.get_dir_path("../config/mothulity.config")
+            config_path_abs = mut.get_dir_path("../config/mothulity.config")
     else:
-        config_path_abs = utilities.get_dir_path("../config/mothulity.config")
+        config_path_abs = mut.get_dir_path("../config/mothulity.config")
     config = configparser.ConfigParser()
     config.read(config_path_abs)
 # Set config file options.
     if any([args.set_align_database_path,
             args.set_taxonomy_database_path]):
         if args.set_align_database_path:
-            utilities.set_config(filename=config_path_abs,
+            mut.set_config(filename=config_path_abs,
                                  section="databases",
                                  options=["align"],
                                  values=[os.path.abspath(args.set_align_database_path)])
         if args.set_taxonomy_database_path:
-            utilities.set_config(filename=config_path_abs,
+            mut.set_config(filename=config_path_abs,
                                  section="databases",
                                  options=["taxonomy"],
                                  values=[os.path.abspath(args.set_taxonomy_database_path)])
@@ -551,8 +551,8 @@ def main():
         print("CSS links not found in config file! Output will not display properly!")
         time.sleep(2)
     try:
-        datatables_js = utilities.get_dir_path("../js/{}".format(config.get("js", "datatables")))
-        slideshow_js = utilities.get_dir_path("../js/{}".format(config.get("js", "slideshow")))
+        datatables_js = mut.get_dir_path("../js/{}".format(config.get("js", "datatables")))
+        slideshow_js = mut.get_dir_path("../js/{}".format(config.get("js", "slideshow")))
     except Exception as e:
         print("Javascript links not found in config file. Output will not display properly!")
         time.sleep(2)
@@ -688,7 +688,7 @@ def main():
 # Rest of the variables must explicitly set to None or zero.
     if all([args.analysis_only, args.render_html]) is False:
         loaded_template = load_template_file(preproc_template,
-                                             searchpath=utilities.get_dir_path("../templates"))
+                                             searchpath=mut.get_dir_path("../templates"))
         label = args.label
         with open(logfile_name, "a") as fin:
             fin.write("\nTemplate used:\n\n{}".format(loaded_template))
@@ -696,7 +696,7 @@ def main():
 # Label, number of samples and junk groups must be read from shared file.
     if args.analysis_only is True:
         loaded_template = load_template_file(analysis_template,
-                                             searchpath=utilities.get_dir_path("../templates"))
+                                             searchpath=mut.get_dir_path("../templates"))
         sampl_num = shared_info["samples_number"]
         label = shared_info["label"]
         junk_grps = shared_info["junk_grps"]
@@ -719,7 +719,7 @@ def main():
 # Output-html varialbles must explicitly set.
     if args.render_html is True:
         loaded_template = load_template_file(output_template,
-                                             searchpath=utilities.get_dir_path("../templates"))
+                                             searchpath=mut.get_dir_path("../templates"))
         label = shared_info["label"]
         junk_grps = shared_info["junk_grps"]
         sampl_num = shared_info["samples_number"]

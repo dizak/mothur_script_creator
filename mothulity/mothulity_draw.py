@@ -3,7 +3,7 @@
 
 from __future__ import print_function
 import six
-from utilities import get_dir_path
+import mothulity.utilities as mut
 import os
 from six.moves import configparser
 import argparse
@@ -485,11 +485,11 @@ def main():
                         help="Pass args into fancy html.")
     args = parser.parse_args()
 
-    config_path_abs = get_dir_path("../config/mothulity.config")
+    config_path_abs = mut.get_dir_path("../config/mothulity.config")
     config = configparser.ConfigParser()
     config.read(config_path_abs)
     datatables_css = config.get("css", "datatables")
-    datatables_js = get_dir_path("../js/{}".format(config.get("js", "datatables")))
+    datatables_js = mut.get_dir_path("../js/{}".format(config.get("js", "datatables")))
 
     if args.rarefaction is True:
         draw_rarefaction(args.input_file_name, args.output_file_name)
