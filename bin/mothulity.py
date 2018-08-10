@@ -2,7 +2,6 @@
 
 
 from __future__ import print_function
-from mothulity import __version__, __author__
 import six
 import utilities
 import time
@@ -17,7 +16,10 @@ from six.moves import configparser
 import shelve
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-
+try:
+    from mothulity import __version__
+except ImportError:
+    __version__ = "development"
 
 
 def load_template_file(template_file,

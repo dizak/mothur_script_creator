@@ -2,7 +2,6 @@
 
 
 from __future__ import print_function
-from mothulity import __version__, __author__
 import six
 from utilities import get_dir_path
 import os
@@ -22,6 +21,10 @@ from seaborn import pairplot
 from seaborn import lmplot
 from lxml import etree as et
 import pandas as pd
+try:
+    from mothulity import __version__
+except ImportError:
+    __version__ = "development"
 
 
 def draw_rarefaction(input_file_name,

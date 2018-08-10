@@ -2,11 +2,14 @@
 
 
 from __future__ import print_function
-from mothulity import __version__, __author__
 import six
 import os
 import argparse
 import pandas as pd
+try:
+    from mothulity import __version__
+except ImportError:
+    __version__ = "development"
 
 
 def names_sanitizer(files_directory,

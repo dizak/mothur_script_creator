@@ -2,12 +2,16 @@
 
 
 from __future__ import print_function
-from mothulity import __version__, __author__
 import six
 import os, sys
 import argparse
 import requests as rq
 from tqdm import tqdm
+try:
+    from mothulity import __version__
+except ImportError:
+    __version__ = "development"
+
 
 
 def get_db(url,
