@@ -2,9 +2,8 @@
 
 
 from __future__ import print_function
+from mothulity import __version__, __author__
 import six
-from __init__ import __author__
-from __init__ import __version__
 import utilities
 import time
 import jinja2 as jj2
