@@ -3,7 +3,6 @@
 
 from __future__ import print_function
 import six
-import mothulity.utilities as mut
 import time
 import jinja2 as jj2
 import argparse
@@ -18,8 +17,10 @@ import pandas as pd
 from bs4 import BeautifulSoup as bs
 try:
     from mothulity import __version__
+    import mothulity.utilities as mut
 except ImportError:
     __version__ = "development"
+    import utilities as mut
 
 
 def load_template_file(template_file,

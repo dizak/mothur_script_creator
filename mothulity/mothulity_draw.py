@@ -3,7 +3,6 @@
 
 from __future__ import print_function
 import six
-import mothulity.utilities as mut
 import os
 from six.moves import configparser
 import argparse
@@ -23,8 +22,10 @@ from lxml import etree as et
 import pandas as pd
 try:
     from mothulity import __version__
+    import mothulity.utilities as mut
 except ImportError:
     __version__ = "development"
+    import utilities as mut
 
 
 def draw_rarefaction(input_file_name,
