@@ -36,10 +36,10 @@ setup(
     license="BSD",
     py_modules=["mothulity/utilities"],
     scripts=[
-        "mothulity/mothulity.py",
-        "mothulity/mothulity_draw.py",
-        "mothulity/mothulity_dbaser.py",
-        "mothulity/mothulity_fc.py",
+        "mothulity/mothulity",
+        "mothulity/mothulity_draw",
+        "mothulity/mothulity_dbaser",
+        "mothulity/mothulity_fc",
      ],
     keywords=[
         "mothur",
