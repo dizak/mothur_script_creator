@@ -33,7 +33,7 @@ Now it is **possible** and **easy** with ```mothulity```!
 
 
 ```bash
-mothulity.py /where/your/project/lives -r bash
+mothulity /where/your/project/lives -r bash
 ```
 
 
@@ -41,5 +41,5 @@ mothulity.py /where/your/project/lives -r bash
 
 
 ```bash
-mothulity.py /where/your/project/lives -r sbatch
+mothulity /where/your/project/lives -r sbatch
 ```

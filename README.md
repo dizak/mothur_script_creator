@@ -37,14 +37,14 @@ mothulity needs databases to operate. Databases can be placed anywhere. The path
 specified by the CLI or in the config file. CLI overrides the config file settings.
 User is asked whether download and set default paths during installation.
 
-- Databases download is handled by ```mothulity_dbaser.py /path/where/database/should/be/downloaded --type-of-database```, eg ```mothulity_dbaser.py /home/user/mothulity/dbs --silva-119```.
+- Databases download is handled by ```mothulity_dbaser /path/where/database/should/be/downloaded --type-of-database```, eg ```mothulity_dbaser /home/user/mothulity/dbs --silva-119```.
 
-- Databases default path set-up is handled by ```mothulity.py --set-align-database-path /path/to/database --set-taxonomy-database-path```.
+- Databases default path set-up is handled by ```mothulity --set-align-database-path /path/to/database --set-taxonomy-database-path```.
 
 #### Basic usage
 
 ```
-mothulity.py /path/to/fastq/files -r sh
+mothulity /path/to/fastq/files -r sh
 ```
 
 Above command will run MiSeq SOP, draw plots, render html output and zip everything.
@@ -54,7 +54,7 @@ The ```-r``` option accepts any shell of choice. On a regular Linux machine it w
 You can send results in the email notification with:
 
 ```
-mothulity.py /path/to/fastq/files -r sh --notify-email your.email@your.domain
+mothulity /path/to/fastq/files -r sh --notify-email your.email@your.domain
 ```
 
 As ```--notify-email``` depends on [headnode_notifier](https://github.com/dizak/headnode_notifier/), please check its repo for configuration instructions.

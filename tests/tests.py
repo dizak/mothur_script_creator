@@ -15,8 +15,8 @@ class PathTests(unittest.TestCase):
         """
         Tests if mothulity is in the system $PATH variable.
         """
-        self.assertEqual(sp.check_output(["which", "mothulity.py"]).decode('utf-8').strip().split("/")[-1],
-                         "mothulity.py")
+        self.assertEqual(sp.check_output(["which", "mothulity"]).decode('utf-8').strip().split("/")[-1],
+                         "mothulity")
 
 
 class ConfigTests(unittest.TestCase):

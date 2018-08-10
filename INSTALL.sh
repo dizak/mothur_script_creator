@@ -48,25 +48,25 @@ download_database() {
   # $2 = ${_db_path}
   case $1 in
     1)
-    ./mothulity_dbaser.py "${2}" --unite-ITS-02 &&
-    ./mothulity.py . --set-align-database-path "${2}/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path "${2}/Unite_ITS_02/UNITEv6_sh_99.tax"
+    ./mothulity_dbaser "${2}" --unite-ITS-02 &&
+    ./mothulity . --set-align-database-path "${2}/Unite_ITS_02/UNITEv6_sh_99.fasta" --set-taxonomy-database-path "${2}/Unite_ITS_02/UNITEv6_sh_99.tax"
     ;;
     2)
-    ./mothulity_dbaser.py "${2}" --unite-ITS-s-02 &&
-    ./mothulity.py . --set-align-database-path "${2}/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path "${2}/Unite_ITS_s_02/UNITEv6_sh_97_s.tax"
+    ./mothulity_dbaser "${2}" --unite-ITS-s-02 &&
+    ./mothulity . --set-align-database-path "${2}/Unite_ITS_s_02/UNITEv6_sh_97_s.fasta" --set-taxonomy-database-path "${2}/Unite_ITS_s_02/UNITEv6_sh_97_s.tax"
     ;;
     3)
-    ./mothulity_dbaser.py "${2}" --silva-102 &&
+    ./mothulity_dbaser "${2}" --silva-102 &&
     printf 'Silva-102 is not handled automatically yet.
     It was NOT set as default database.\n'
     ;;
     4)
-    ./mothulity_dbaser.py "${2}" --silva-119 &&
-    ./mothulity.py . --set-align-database-path "${2}/silva.nr_v119.align" --set-taxonomy-database-path "${2}/silva.nr_v119.tax"
+    ./mothulity_dbaser "${2}" --silva-119 &&
+    ./mothulity . --set-align-database-path "${2}/silva.nr_v119.align" --set-taxonomy-database-path "${2}/silva.nr_v119.tax"
     ;;
     5)
-    ./mothulity_dbaser.py "${2}" --silva-123 &&
-    ./mothulity.py . --set-align-database-path "${2}/silva.nr_v123.align" --set-taxonomy-database-path "${2}/silva.nr_v123.tax"
+    ./mothulity_dbaser "${2}" --silva-123 &&
+    ./mothulity . --set-align-database-path "${2}/silva.nr_v123.align" --set-taxonomy-database-path "${2}/silva.nr_v123.tax"
     ;;
     6)
     break

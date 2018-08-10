@@ -17,7 +17,7 @@
 . activate mothulity
 {% endif %}
 ###Create *files file###
-mothulity_fc.py {{files_directory}} -o {{files_directory}}{{job_name}}.files
+mothulity_fc {{files_directory}} -o {{files_directory}}{{job_name}}.files
 {% if nodes > 1 %}
 ########################
 # WARNING
@@ -93,4 +93,4 @@ headnode_notifier.py {{notify_email}} --subject '{{job_name}} sequence preproces
 {% else %}
 {% endif %}
 ###Call mothulity for the analysis part###
-mothulity.py {{files_directory}} -n analysis_{{job_name}} --output-dir {{output_dir}} --analysis-only {% if run %}-r {{run}}{% endif %} {% if notify_email %}--notify-email {{notify_email}}{% endif %}
+mothulity {{files_directory}} -n analysis_{{job_name}} --output-dir {{output_dir}} --analysis-only {% if run %}-r {{run}}{% endif %} {% if notify_email %}--notify-email {{notify_email}}{% endif %}
