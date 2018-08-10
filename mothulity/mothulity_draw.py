@@ -22,7 +22,7 @@ from lxml import etree as et
 import pandas as pd
 try:
     from mothulity import __version__
-    import mothulity.utilities as mut
+    from mothulity import utilities as mut
 except ImportError:
     __version__ = "development"
     import utilities as mut
