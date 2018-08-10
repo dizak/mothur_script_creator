@@ -35,8 +35,9 @@ def get_dir_path(file_name=""):
     >>> get_dir_path("foo") # doctest: +SKIP
     '/home/user/program/bin/foo'
     """
-    prog_path = sys.argv[0].replace(sys.argv[0].split("/")[-1],
-                                    file_name)
+    # prog_path = sys.argv[0].replace(sys.argv[0].split("/")[-1],
+    #                                 file_name)
+    prog_path = "/".join(sys.argv[0].split("/")[:-1] + [file_name])
     return os.path.abspath(prog_path)
 
 
