@@ -5,8 +5,6 @@ import unittest
 from six.moves import configparser
 import subprocess as sp
 from mothulity import utilities
-import mothulity
-import jinja2 as jj2
 
 
 class PathTests(unittest.TestCase):
@@ -175,22 +173,3 @@ class UtilitiesTests(unittest.TestCase):
                 for o in self.config_2.options(s):
                     self.test_values.append((s, o, self.config_2.get(s, o)))
             self.assertEqual(self.ref_values_2, self.test_values)
-
-
-class MothulityTests(unittest.TestCase):
-    """
-    Tests of the mothulity functions.
-    """
-    def setUp(self):
-        """
-        Sets up class level attributes for the tests.
-        """
-        self.jinja_template_file = "tests/test.jj2"
-
-    def load_template_file_test(self):
-        """
-        Tests if jinja2 template file is properly loaded.
-        """
-        lt = mothulity.load_template_file(self.jinja_template_file,
-                                          searchpath=".")
-        self.assertTrue(isinstance(lt, isinstance(lt, jinja2.environment.Template)))

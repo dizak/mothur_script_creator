@@ -41,6 +41,13 @@ def load_template_file(template_file,
     Returns
     -------
     jinja2.Template
+
+    Examples
+    -------
+    >>> import jinja2
+    >>> lt = load_template_file("./tests/test.jj2", searchpath=".")
+    >>> isinstance(lt, jinja2.environment.Template)
+    True
     """
     template_Loader = jj2.FileSystemLoader(searchpath=searchpath)
     template_Env = jj2.Environment(loader=template_Loader)
