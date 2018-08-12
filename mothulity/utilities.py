@@ -10,7 +10,8 @@ from six.moves import configparser
 import jinja2 as jj2
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-
+import requests as rq
+from tqdm import tqdm
 
 
 def get_dir_path(file_name=""):
@@ -284,3 +285,75 @@ def parse_html(input_file_name,
     elif html_type == "rarefaction" or html_type == "nmds":
         return {"div": str(soup.div),
                 "script": str(soup.script)}
+
+
+def get_db(url,
+           save_path,
+           chunk=8192):
+    """
+    Download from url to file. Handles different chunk sizes saving RAM. Shows
+    progress with tqdm progress bar.
+
+    Parameters
+    -------
+    url: str
+        URL to download from.
+    save_path: str
+        Local URL to save to.
+    chunk: int, default 8192
+        Size of chunk the stream is divided to. Smaller it is less memory it
+        uses.
+
+    Examples
+    -------
+    >>> import os
+    >>> get_db("http://google.com", "./tests/google.html")
+    200
+    >>> os.path.getsize("./tests/google.html") > 0
+    True
+    """
+    res = rq.get(url, stream=True)
+    total_len = int(res.headers.get("content-length"))
+    if res.status_code == 200:
+        with open(save_path, "wb") as fout:
+            for i in tqdm(res.iter_content(chunk_size=chunk),
+                          total=total_len / chunk):
+                fout.write(i)
+    return res.status_code
+
+
+def download(download_directory,
+             filename,
+             url,
+             command,
+             input_arg,
+             output_arg):
+    """
+    Download and unpack specified database into specified directory.
+
+    Parameters
+    -------
+    db_type: str
+        Database name which determines the download URL and archive type.
+    download_directory: str
+        Path where the database files would be downloaded.
+    """
+    download_path = "{}/{}".format(download_directory, filename)
+    print("Download path: {}".format(download_path))
+    print("Connecting...")
+    try:
+        res = get_db(url, download_path)
+        if res == 200:
+            print("Downloading done!")
+            print("Unpacking...")
+            os.system("{} {} {} {} {}".format(command,
+                                              input_arg,
+                                              download_path,
+                                              output_arg,
+                                              download_directory))
+            os.system("rm {}".format(download_path))
+            print("Unpacking done!")
+        else:
+            print("Failed to establish connection. Response code {}".format(res))
+    except Exception as e:
+        print("Failed to establish connection.")
