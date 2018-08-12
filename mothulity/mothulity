@@ -412,15 +412,15 @@ def main():
         print("Output directory not found. Quitting...")
         exit()
 # Read file globs from specified directories.
-    shared_files_list = glob.glob("{}{}".format(files_directory_abs,
-                                                config.get("file_globs",
-                                                           "shared")))
-    tax_sum_files_list = glob.glob("{}{}".format(files_directory_abs,
-                                                 config.get("file_globs",
-                                                            "tax_sum")))
-    design_files_list = glob.glob("{}{}".format(files_directory_abs,
-                                                config.get("file_globs",
-                                                           "design")))
+    shared_files_list = glob("{}{}".format(files_directory_abs,
+                                           config.get("file_globs",
+                                                      "shared")))
+    tax_sum_files_list = glob("{}{}".format(files_directory_abs,
+                                            config.get("file_globs",
+                                                       "tax_sum")))
+    design_files_list = glob("{}{}".format(files_directory_abs,
+                                           config.get("file_globs",
+                                                      "design")))
 # Make decision what to do based on file globs.
     if len(shared_files_list) > 1:
         if args.render_html is True:
