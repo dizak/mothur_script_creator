@@ -18,7 +18,7 @@ deploy:
 
 install:
   - python setup.py sdist
-  - pip install dist/mothulity-1.5.0.tar.gz
+  - pip install dist/mothulity-*.tar.gz
 
 before_script:
   - mkdir $HOME/db/
