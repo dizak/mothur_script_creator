@@ -21,9 +21,9 @@ Now it is **possible** and **easy** with ```mothulity```!
 ## Install
 
 
-1. Clone or download.
-
-1. Run installation script.
+```bash
+pip install mothulity
+```
 
 
 ## Run!
