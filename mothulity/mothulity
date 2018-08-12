@@ -1,16 +1,22 @@
 #! /usr/bin/env python
 
 
+from __future__ import print_function
+import six
+import sys
+import os
+from glob import glob
 import time
 import argparse
+from six.moves import configparser
 try:
     from mothulity import __version__
 except ImportError:
     __version__ = "development"
 try:
-    from mothulity.utilities import *
+    import mothulity.utilities as mut
 except ImportError:
-    from utilities import *
+    import utilities as mut
 
 
 def main():
@@ -315,24 +321,24 @@ def main():
         else:
             print("Failed to find or open {} config file. Using default.".format(args.set_config_path))
             time.sleep(2)
-            config_path_abs = get_dir_path("../config/mothulity.config")
+            config_path_abs = mut.get_dir_path("../config/mothulity.config")
     else:
-        config_path_abs = get_dir_path("../config/mothulity.config")
+        config_path_abs = mut.get_dir_path("../config/mothulity.config")
     config = configparser.ConfigParser()
     config.read(config_path_abs)
 # Set config file options.
     if any([args.set_align_database_path,
             args.set_taxonomy_database_path]):
         if args.set_align_database_path:
-            set_config(filename=config_path_abs,
-                                 section="databases",
-                                 options=["align"],
-                                 values=[os.path.abspath(args.set_align_database_path)])
+            mut.set_config(filename=config_path_abs,
+                           section="databases",
+                           options=["align"],
+                           values=[os.path.abspath(args.set_align_database_path)])
         if args.set_taxonomy_database_path:
-            set_config(filename=config_path_abs,
-                                 section="databases",
-                                 options=["taxonomy"],
-                                 values=[os.path.abspath(args.set_taxonomy_database_path)])
+            mut.set_config(filename=config_path_abs,
+                           section="databases",
+                           options=["taxonomy"],
+                           values=[os.path.abspath(args.set_taxonomy_database_path)])
         exit()
 # Read options from config file.
 # If config file is the only source of the variable content and it is not found - quit from here.
@@ -361,8 +367,8 @@ def main():
         print("CSS links not found in config file! Output will not display properly!")
         time.sleep(2)
     try:
-        datatables_js = get_dir_path("../js/{}".format(config.get("js", "datatables")))
-        slideshow_js = get_dir_path("../js/{}".format(config.get("js", "slideshow")))
+        datatables_js = mut.get_dir_path("../js/{}".format(config.get("js", "datatables")))
+        slideshow_js = mut.get_dir_path("../js/{}".format(config.get("js", "slideshow")))
     except Exception as e:
         print("Javascript links not found in config file. Output will not display properly!")
         time.sleep(2)
@@ -449,7 +455,7 @@ def main():
         else:
             design_file = None
         if any([args.analysis_only, args.render_html]) is True:
-            shared_info = read_info_shared(shared_file)
+            shared_info = mut.read_info_shared(shared_file)
             print("Found {} shared file".format(shared_file))
             time.sleep(2)
         elif any([args.analysis_only, args.render_html]) is False:
@@ -497,16 +503,16 @@ def main():
 # Label must be from args.label.
 # Rest of the variables must explicitly set to None or zero.
     if all([args.analysis_only, args.render_html]) is False:
-        loaded_template = load_template_file(preproc_template,
-                                             searchpath=get_dir_path("../templates"))
+        loaded_template = mut.load_template_file(preproc_template,
+                                             searchpath=mut.get_dir_path("../templates"))
         label = args.label
         with open(logfile_name, "a") as fin:
             fin.write("\nTemplate used:\n\n{}".format(loaded_template))
 # Load analysis_template if args.analysis_only is True.
 # Label, number of samples and junk groups must be read from shared file.
     if args.analysis_only is True:
-        loaded_template = load_template_file(analysis_template,
-                                             searchpath=get_dir_path("../templates"))
+        loaded_template = mut.load_template_file(analysis_template,
+                                             searchpath=mut.get_dir_path("../templates"))
         sampl_num = shared_info["samples_number"]
         label = shared_info["label"]
         junk_grps = shared_info["junk_grps"]
@@ -528,21 +534,21 @@ def main():
 # All non-output-html variables must be read from shared file.
 # Output-html varialbles must explicitly set.
     if args.render_html is True:
-        loaded_template = load_template_file(output_template,
-                                             searchpath=get_dir_path("../templates"))
+        loaded_template = mut.load_template_file(output_template,
+                                             searchpath=mut.get_dir_path("../templates"))
         label = shared_info["label"]
         junk_grps = shared_info["junk_grps"]
         sampl_num = shared_info["samples_number"]
-        krona_html = parse_html("alpha/{}.krona.html".format(args.job_name),
+        krona_html = mut.parse_html("alpha/{}.krona.html".format(args.job_name),
                                 html_type="krona")
-        sum_html = parse_html("alpha/{}.sum.html".format(args.job_name),
+        sum_html = mut.parse_html("alpha/{}.sum.html".format(args.job_name),
                               html_type="summary")
-        raref_html = parse_html("alpha/{}.raref.html".format(args.job_name),
+        raref_html = mut.parse_html("alpha/{}.raref.html".format(args.job_name),
                                 html_type="rarefaction")
         if sampl_num > 1:
-            nmds_jc_html = parse_html("beta/{}.jclass.nmds.html".format(args.job_name),
+            nmds_jc_html = mut.parse_html("beta/{}.jclass.nmds.html".format(args.job_name),
                                       html_type="nmds")
-            nmds_th_html = parse_html("beta/{}.thetayc.nmds.html".format(args.job_name),
+            nmds_th_html = mut.parse_html("beta/{}.thetayc.nmds.html".format(args.job_name),
                                       html_type="nmds")
         with open(logfile_name, "a") as fin:
             fin.write("\nTemplate used:\n\n{}".format(loaded_template))
@@ -589,13 +595,13 @@ def main():
                      "nmds_jc_html": nmds_jc_html,
                      "nmds_th_html": nmds_th_html,
                      "exclude_krona": args.exclude_krona}
-    rendered_template = render_template(loaded_template,
+    rendered_template = mut.render_template(loaded_template,
                                         template_vars)
 # Save template as bash script of HTML file depending on args.render_html value.
     if args.render_html is True:
-        save_template("{}.html".format(args.job_name), rendered_template)
+        mut.save_template("{}.html".format(args.job_name), rendered_template)
     else:
-        save_template("{}{}.sh".format(output_dir_abs, args.job_name),
+        mut.save_template("{}{}.sh".format(output_dir_abs, args.job_name),
                       rendered_template)
 # Run outputted script or not depending on args.run and args.dry-run
     if args.run is not None and args.dry_run is not True:
