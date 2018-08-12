@@ -6,6 +6,16 @@ python:
   - "3.5"
   - "3.6"
 
+deploy:
+  provider: pypi
+  user: dizak
+  password: $pypi_passwd
+  distributions: sdist
+  on:
+    tags: true
+    branch: master
+    python: 3.6
+
 install:
   - python setup.py sdist
   - pip install dist/mothulity-1.5.0.tar.gz
