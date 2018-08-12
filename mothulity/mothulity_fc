@@ -3,104 +3,15 @@
 
 from __future__ import print_function
 import six
-import os
-import argparse
 import pandas as pd
 try:
     from mothulity import __version__
 except ImportError:
     __version__ = "development"
-
-
-def names_sanitizer(files_directory,
-                    unwanted_sign):
-    """
-    Remove desired sign from file names from all files in given directory.
-
-    Parameters
-    -------
-    files_directory: str
-        Input directory.
-    unwanted_sign: str,
-        Sign to be removed from file names.
-
-    Examples
-    -------
-    >>> import os
-    >>> open("./tests/test-test-test.test", "wb").close()
-    >>> names_sanitizer("./tests", "-")
-    >>> "testtesttest.test" in os.listdir("./tests/")
-    True
-    """
-    for i in os.listdir(files_directory):
-        if unwanted_sign in i:
-            os.rename("{0}/{1}".format(files_directory,
-                                       i),
-                      "{0}/{1}".format(files_directory,
-                                       i.replace(unwanted_sign, "")))
-
-
-def left_n_right_generator(files_directory,
-                           split_sign="_",
-                           files_extension="fastq",
-                           left_reads_sign="R1",
-                           right_reads_sign="R2"):
-    """
-    Returns dict containing two lists of file names. Names are divided into
-    sections by split sign. Then, names are recognized as left or right by
-    given set of characters.
-
-    Parameters
-    -------
-    files_directory: str
-        Input directory.
-    split_sign: str, default <_>
-        Character by which file names are split into sections.
-    files_extension: str, default <fastq>
-        Only file names with this extensions are taken as input.
-    left_reads_sign: str, default <R1>
-        Set of characters by which file names are recognized as left.
-    right_reads_sign: str, default <R2>
-        Set of characters by which file names are recognized as right.
-
-    Returns
-    -------
-    dict of lists
-        Dict with <left> and <right> keywords and two lists of str as values.
-
-    Examples
-    -------
-    >>> filenames = left_n_right_generator("./tests")
-    >>> filenames["left"][0]["name"]
-    'test1'
-    >>> filenames["left"][0]["left_reads"]
-    './tests/test1_S001_R1.fastq'
-    >>> filenames["right"][0]["right_reads"]
-    './tests/test1_S001_R2.fastq'
-    >>> filenames["left"][1]["name"]
-    'test2'
-    >>> filenames["left"][1]["left_reads"]
-    './tests/test2_S001_R1.fastq'
-    >>> filenames["right"][1]["right_reads"]
-    './tests/test2_S001_R2.fastq'
-    """
-    left_name_reads_list = []
-    right_name_reads_list = []
-    files_list = os.listdir(files_directory)
-    files_list = [i for i in files_list if files_extension == i.split(".")[-1]]
-    sample_names_list = [i.split(split_sign)[0] for i in files_list]
-    sample_names_list = sorted(list(set(sample_names_list)))
-    for i in sample_names_list:
-        for ii in files_list:
-            if i == ii.split(split_sign)[0] and left_reads_sign in ii:
-                left_name_reads_list.append({"name": i, "left_reads": "{0}/{1}".format(files_directory, ii)})
-            elif i == ii.split(split_sign)[0] and right_reads_sign in ii:
-                right_name_reads_list.append({"name": i, "right_reads": "{0}/{1}".format(files_directory, ii)})
-            else:
-                pass
-    name_reads = {"left": left_name_reads_list,
-                  "right": right_name_reads_list}
-    return name_reads
+try:
+    from mothulity import utilities as mut
+except ImportError:
+    import utilities as mut
 
 
 def main():
@@ -169,7 +80,7 @@ def main():
                         "-")
     else:
         pass
-    left_n_right = left_n_right_generator(args.files_directory,
+    left_n_right = mut.left_n_right_generator(args.files_directory,
                                           args.split_sign,
                                           args.files_extension,
                                           args.left_reads_sign,
