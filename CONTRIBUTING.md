@@ -24,6 +24,8 @@ Below you can find the description of mothulity structure and contribution guide
   * [Tests](#tests)
   * [Data for Teststing](#data-for-testing)
 
+[Deployment](#deployment)
+
 ## Flow
 
 The philosophy behind mothulity is quite simple:
@@ -148,3 +150,7 @@ A place for the unit tests. Some test data still live under this directory but s
 Localization in the repository: ```test_data/```
 
 Any data used for the purpose of testing should be placed there.
+
+## Deployment
+
+The deployment is managed by [Travis-CI](https://travis-ci.org). It is triggered by setting a version tag on branch master.
