@@ -14,8 +14,6 @@ layout: default
 
 Run your 16S/ITS **analysis** with a **single command**
 
-Install your **dependencies** running a single script and **no root**
-
 **Easily** queue your job on a **computing cluster**
 
 Now it is **possible** and **easy** with ```mothulity```!
