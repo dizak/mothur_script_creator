@@ -42,7 +42,7 @@ pip install mothulity
 mothulity_dbaser databases_directory --silva-119
 --set-align-database-path databases_directory/silva.nr_v119.align
 --set-taxonomy-database-path databases_directory/silva.nr_v119.tax
-mothulity project/fastq/directory -r bash -n project_name
+mothulity project/fastq/directory -r bash -n my_first_mothulity_project
 ```
 
 
@@ -151,11 +151,11 @@ and
 Once the databases path is set up, you can easily run your analysis:
 
 ```bash
-mothulity ~/MiSeq_SOP -r bash -n project_name
+mothulity ~/MiSeq_SOP -r bash -n my_first_mothulity_project
 ```
 
 ```~/MiSeq_SOP``` is where your fastq files are.
 
 ```-r bash``` indicates shell to use. If you are using some *exotic* shell, pass its name here. If you are using workload manager, use a command to submit a job. For [SLURM](https://slurm.schedmd.com/) it would be ```sbatch```
 
-```-n project_name``` is used to name files, directories and give a title the final output.
+```-n my_first_mothulity_project``` is used to name files, directories and give a title the final output.
