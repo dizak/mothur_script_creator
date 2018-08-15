@@ -16,6 +16,8 @@ layout: default
 
 [Minimal Example](#minimal-example)
 
+[Prerequisities](#prerequisities)
+
 [Installing](#installing)
 
 [Downloading Databases](#downloading-databases)
@@ -44,6 +46,38 @@ mothulity project/fastq/directory -r bash -n project_name
 ```
 
 
+#Prerequisities
+
+
+1. In this brief tutorial we will assume you are working in your ```$HOME``` directory.
+
+1. Create a directory for storing databases. For our example, let it be ~/databases_directory.
+
+1. Download the [test dataset](https://www.mothur.org/w/images/d/d6/MiSeqSOPData.zip) to your home directory and unzip it.
+
+1. ```mothulity``` uses a simple naming convention for the input fastq files. Have a look at two pairs of files inside ```~/MiSeq_SOP```:
+
+```bash
+F3D0_S188_L001_R1_001.fastq
+F3D0_S188_L001_R2_001.fastq
+F3D1_S189_L001_R1_001.fastq
+F3D1_S189_L001_R2_001.fastq
+```
+
+this is how mothulity sees it:
+
+|Sample name|Direction|Extension|
+|:----------|:--------|:--------|
+|F3D0       |R1       |fastq    |
+|F3D0       |R2       |fastq    |
+|F3D1       |R1       |fastq    |
+|F3D1       |R2       |fastq    |
+
+  * The separator is ```_```.
+  * The sample name is the first part of the name.
+  * ```R1``` means *left* and ```R2``` means *right*.
+  * ```fastq``` extension means it is a valid file to take as an input.
+
 ## Installing
 
 
@@ -71,7 +105,7 @@ There would be no 16S/ITS analysis with a database.
 
 
 ```bash
-mothulity_dbaser ~/databases --silva-119
+mothulity_dbaser ~/databases_directory --silva-119
 ```
 
 
@@ -83,7 +117,7 @@ mothulity_dbaser ~/databases --silva-119
 
 
 ```bash
---align-database ~/databases/silva.nr_v119.align
+--align-database ~/databases_directory/silva.nr_v119.align
 ```
 
 
@@ -91,7 +125,7 @@ and
 
 
 ```bash
---taxonomy-database ~/databases/silva.nr_v119.tax
+--taxonomy-database ~/databases_directory/silva.nr_v119.tax
 ```
 
 
@@ -99,7 +133,7 @@ or you can set it persistently with:
 
 
 ```bash
---set-align-database-path ~/databases/silva.nr_v119.align
+--set-align-database-path ~/databases_directory/silva.nr_v119.align
 ```
 
 
@@ -107,7 +141,7 @@ and
 
 
 ```bash
---set-taxonomy-database-path ~/databases/silva.nr_v119.tax
+--set-taxonomy-database-path ~/databases_directory/silva.nr_v119.tax
 ```
 
 
@@ -117,11 +151,11 @@ and
 Once the databases path is set up, you can easily run your analysis:
 
 ```bash
-mothulity project/path -r bash -n project_name
+mothulity ~/MiSeq_SOP -r bash -n project_name
 ```
 
-```project/path``` tells ```mothulity``` where are your fastq files.
+```~/MiSeq_SOP``` is where your fastq files are.
 
 ```-r bash``` indicates shell to use. If you are using some *exotic* shell, pass its name here. If you are using workload manager, use a command to submit a job. For [SLURM](https://slurm.schedmd.com/) it would be ```sbatch```
 
-```-n project_name``` is used to name files, directories and title the final output.
+```-n project_name``` is used to name files, directories and give a title the final output.
