@@ -159,3 +159,5 @@ mothulity ~/MiSeq_SOP -r bash -n my_first_mothulity_project
 ```-r bash``` indicates shell to use. If you are using some *exotic* shell, pass its name here. If you are using workload manager, use a command to submit a job. For [SLURM](https://slurm.schedmd.com/) it would be ```sbatch```
 
 ```-n my_first_mothulity_project``` is used to name files, directories and give a title the final output.
+
+The output is placed in ```~/MiSeq_SOP/analysis/OTU/analysis_my_first_mothulity_project.html``` and should look like [this](../analysis_example/analysis_my_first_mothulity_project.html)
