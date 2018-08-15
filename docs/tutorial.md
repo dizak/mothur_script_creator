@@ -81,7 +81,8 @@ mothulity_dbaser ~/databases --silva-119
 
 
 ```bash
---align-database ~/databases/silva.nr_v119.align```
+--align-database ~/databases/silva.nr_v119.align
+```
 
 
 and
