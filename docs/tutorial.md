@@ -46,7 +46,7 @@ mothulity project/fastq/directory -r bash -n project_name
 ```
 
 
-#Prerequisities
+## Prerequisities
 
 
 1. In this brief tutorial we will assume you are working in your ```$HOME``` directory.
