@@ -2,7 +2,7 @@
 layout: default
 ---
 
-[Home](./index.md)
+[Home](./index.html)
 
 [FAQs](./faqs.html)
 

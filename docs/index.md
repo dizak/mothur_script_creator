@@ -4,7 +4,7 @@ layout: default
 
 [![Downloads](http://pepy.tech/badge/mothulity)](http://pepy.tech/project/mothulity)
 
-[Home](./index.md)
+[Home](./index.html)
 
 [FAQs](./faqs.html)
 
