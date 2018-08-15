@@ -3,7 +3,9 @@ layout: default
 ---
 
 [Home](./index.md)
+
 [FAQs](./faqs.html)
+
 [Tutorial](./tutorial.html)
 
 Q: _Is mothulity the same thing as [Mothur](https://mothur.org/wiki/Main_Page)?_
