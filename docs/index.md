@@ -4,13 +4,6 @@ layout: default
 
 [![Downloads](http://pepy.tech/badge/mothulity)](http://pepy.tech/project/mothulity)
 
-[Home](./index.html)
-
-[FAQs](./faqs.html)
-
-[Tutorial](./tutorial.html)
-
-
 # mothulity
 
 

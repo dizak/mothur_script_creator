@@ -2,12 +2,6 @@
 layout: default
 ---
 
-[Home](./index.html)
-
-[FAQs](./faqs.html)
-
-[Tutorial](./tutorial.html)
-
 Q: _Is mothulity the same thing as [Mothur](https://mothur.org/wiki/Main_Page)?_
 
 A: No. [Mothur](https://mothur.org/wiki/Main_Page) is a project developed by Pat Schloss and his collaborators.
