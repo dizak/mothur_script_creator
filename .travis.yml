@@ -23,7 +23,6 @@ install:
 before_script:
   - mkdir $HOME/db/
   - hash ktImportXML
-  - hash blastall
   - hash mothur
 
 script:
