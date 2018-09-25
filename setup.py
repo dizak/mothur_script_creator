@@ -31,7 +31,7 @@ setup(
             "bin/kronatools/scripts/ktImportXML",
         ]),
         ("img", kronatools_img_files),
-        ("src", kronatools_lib_files),
+        ("lib", kronatools_lib_files),
         ("src", kronatools_src_files),
     ],
     install_requires=open("requirements.txt").readlines(),
