@@ -302,6 +302,18 @@ def main():
                           default=None,
                           help="Set temporary path to config file.")
     args = parser.parse_args()
+
+    if len(sys.argv)==1:
+        parser.print_help()
+        parser.exit()
+
+    try:
+        args = parser.parse_args()
+    except SystemExit as error:
+        if error.code == 2:
+            parser.print_help()
+        parser.exit()
+
 # Define variables that can overridden by CLI, config or other function and should cause exit if None in a proper place in the decision tree.
     align_database_abs = None
     taxonomy_database_abs = None
