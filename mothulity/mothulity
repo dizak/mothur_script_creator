@@ -271,9 +271,8 @@ def main():
                        <mismatch=-2>,\
                        <gapopen=-2>,\
                        <gapextend=-1>,\
-                       <numwanted=1>
-    ).\
-        Default <False>"
+                       <numwanted=1>\
+                       Default <False>"
     )
     mothur.add_argument(
         "--align-database",
