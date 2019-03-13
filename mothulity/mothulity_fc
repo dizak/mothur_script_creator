@@ -91,7 +91,17 @@ def main():
         default=False,
         help="do not modify file names.",
     )
-    args = parser.parse_args()
+
+    if len(sys.argv)==1:
+        parser.print_help()
+        parser.exit()
+
+    try:
+        args = parser.parse_args()
+    except SystemExit as error:
+        if error.code == 2:
+            parser.print_help()
+        parser.exit()
 
     if args.original_names is False:
         mut.names_sanitizer(args.files_directory,
