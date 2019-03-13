@@ -88,8 +88,7 @@ def main():
                         dest="dry_run",
                         default=False,
                         help="prevents mothur script execution. Default\
-                        <False>")
-    headnode.add_argument("--partition",
+                        <False>.")
                           action="store",
                           dest="partition",
                           metavar="",
