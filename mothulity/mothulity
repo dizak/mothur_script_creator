@@ -41,7 +41,7 @@ def main():
         metavar="path/to/files",
         default=".",
         help="""
-        input directory path. It is used as working directory for the job.
+        input directory path. Used as working directory for the job.
         Default CWD.
         """
     )
@@ -65,8 +65,8 @@ def main():
         metavar=".",
         default=".",
         help="""
-        output directory path for script. It is NOT output directory for actual
-        job.
+        output directory path for the script. It is NOT output directory for
+        actual job.
         """
     )
     parser.add_argument(
@@ -77,8 +77,8 @@ def main():
         metavar="",
         default=None,
         help="""
-        shell call. Use if you want to run the mothur script immediately, in
-        current directory. eg -r sh for regular bash or -r sbatch for slurm.
+        shell call. Runs the mothur script immediately in current directory,
+        eg -r sh for regular bash or -r sbatch for slurm.
         """
     )
     parser.add_argument(
@@ -97,7 +97,7 @@ def main():
         dest="render_html",
         default=False,
         help="""
-        path/to/html-template-file. Use to pass args into fancy html.
+        path/to/html-template-file. Passes args into fancy html.
         """
     )
     parser.add_argument(
@@ -355,7 +355,8 @@ def main():
         dest="full_ram_load",
         default=False,
         help="""
-        Use if you want to use cluster command instead of cluster.split.
+        Replaces ram-saving <cluster.split> command with no-compromise
+        <cluster> command.
         """
     )
     mothur.add_argument(
@@ -375,7 +376,7 @@ def main():
         dest="keep_all",
         default=False,
         help="""
-        Keep all groups, even if they can distort analysis due to small size
+        Keeps all groups, even if they can distort analysis due to small size
         during subsampling.
         """
     )
