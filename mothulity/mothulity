@@ -301,7 +301,6 @@ def main():
                           metavar="",
                           default=None,
                           help="Set temporary path to config file.")
-    args = parser.parse_args()
 
     if len(sys.argv)==1:
         parser.print_help()
