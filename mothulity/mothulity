@@ -533,7 +533,10 @@ def main():
         exit()
     if args.add_slurm_setting:
         slurm_setting = dict(i.split("=") for i in args.add_slurm_setting.split())
-        config_slurm.read_dict(slurm_setting)
+        section = slurm_setting['name']
+        print(slurm_setting)
+        slurm_setting.pop('name')
+        config_slurm.read_dict({section: slurm_setting})
         with open(config_slurm_path_abs, "w") as fout: config_slurm.write(fout)
         exit()
 # Read options from config file.
