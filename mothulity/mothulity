@@ -431,6 +431,16 @@ def main():
         Set temporary path to config file.
         """
     )
+    settings.add_argument(
+        "--set-slurm-config-path",
+        action="store",
+        dest="set_slurm_config_path",
+        metavar="",
+        default=None,
+        help="""
+        Set temporary path to SLURM config file.
+        """
+    )
 
     if len(sys.argv)==1:
         parser.print_help()
