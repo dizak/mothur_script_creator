@@ -134,6 +134,7 @@ def main():
         "--add-slurm-setting",
         action='store',
         dest="add_slurm_setting",
+        metavar="",
         default=False,
         help="""
         set persistent SLURM setting. If the setting exists it is OVERWRITTEN.
