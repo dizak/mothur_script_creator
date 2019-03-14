@@ -529,12 +529,12 @@ def main():
             with open(config_path_abs, "w") as fout: config.write(fout)
         if args.set_taxonomy_database_path:
             config.set("databases", "taxonomy", os.path.abspath(args.set_taxonomy_database_path))
-            with open(config_path_abs, "w") as fout: config.write(fout)
+            with open(config_path_abs, "w") as fout: config_slurm.write(fout)
         exit()
     if args.add_slurm_setting:
         slurm_setting = dict(i.split("=") for i in args.add_slurm_setting.split())
         config_slurm.read_dict(slurm_setting)
-        with open(config_slurm_path_abs, "w") as fout: config.write(fout)
+        with open(config_slurm_path_abs, "w") as fout: config_slurm.write(fout)
         exit()
 # Read options from config file.
 # If config file is the only source of the variable content and it is not found - quit from here.
