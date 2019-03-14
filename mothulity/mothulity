@@ -138,6 +138,18 @@ def main():
         default=False,
         help="""
         set persistent SLURM setting. If the setting exists it is OVERWRITTEN.
+        Format:
+            "name=<string>
+             partition=<string>
+             nodes=<integer>
+             ntasks_per_node=<integer>
+             processors=<integer>".
+        For instance:
+            "name=small
+             partition=short
+             nodes=1
+             ntasks_per_node=1
+             processors=12".
         """
     )
     slurm.add_argument(
