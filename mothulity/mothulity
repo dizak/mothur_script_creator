@@ -486,6 +486,18 @@ def main():
         config_slurm_path_abs = mut.get_dir_path("../config/slurm.config")
     config = configparser.ConfigParser()
     config.read(config_path_abs)
+    config_slurm = configparser.ConfigParser()
+    config_slurm.read(config_slurm_path_abs)
+# List SLURM MD settings from the config file.
+    if args.list_slurm_settings:
+        if len(config_slurm.sections()) == 0:
+            print("No SLURM settings defined.")
+            exit()
+        for section in config_slurm.sections():
+            print(section, end="\n-------\n")
+            for key in config_slurm[section]:
+                print(key, config_slurm.get(section, key), sep=': ')
+        exit()
 # Set config file options.
     if any([args.set_align_database_path,
             args.set_taxonomy_database_path]):
