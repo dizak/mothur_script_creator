@@ -131,6 +131,15 @@ def main():
         """
     )
     slurm.add_argument(
+        "--add-slurm-setting",
+        action='store',
+        dest="add_slurm_setting",
+        default=False,
+        help="""
+        set persistent SLURM setting. If the setting exists it is OVERWRITTEN.
+        """
+    )
+    slurm.add_argument(
         "--partition",
         action="store",
         dest="partition",
