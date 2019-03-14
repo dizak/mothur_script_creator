@@ -122,6 +122,15 @@ def main():
         """
     )
     slurm.add_argument(
+        "--list-slurm-settings",
+        action="store_true",
+        dest="list_slurm_settings",
+        default=False,
+        help="""
+        list SLURM MD settings defined in the config file.
+        """
+    )
+    slurm.add_argument(
         "--partition",
         action="store",
         dest="partition",
