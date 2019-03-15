@@ -152,7 +152,7 @@ def main():
              processors=12".
         """
     )
-    slu.add_argument(
+    slurm.add_argument(
         "--set-slurm-config-path",
         action="store",
         dest="set_slurm_config_path",
