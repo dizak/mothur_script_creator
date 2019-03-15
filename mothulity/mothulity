@@ -454,14 +454,14 @@ def main():
         """
     )
     advanced.add_argument(
-    "--exclude-krona",
-    action="store_true",
-    dest="exclude_krona",
-    default=False,
-    help="""
-    Do not include krona pie chart into final html. Krona can be included
-    only as an iframe.
-    """
+        "--exclude-krona",
+        action="store_true",
+        dest="exclude_krona",
+        default=False,
+        help="""
+        Do not include krona pie chart into final html. Krona can be included
+        only as an iframe.
+        """
     )
 
     if len(sys.argv)==1:
