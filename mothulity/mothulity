@@ -444,9 +444,9 @@ def main():
         """
     )
     settings.add_argument(
-        "--set-config-path",
+        "--set-main-config-path",
         action="store",
-        dest="set_config_path",
+        dest="set_main_config_path",
         metavar="",
         default=None,
         help="""
@@ -486,13 +486,13 @@ def main():
     nmds_jc_html = None
     nmds_th_html = None
 # Read-in config file. CLI overrides default directory.
-    if args.set_config_path:
-        if os.path.isfile(args.set_config_path):
-            mothu_config_path_abs = os.path.abspath(args.set_config_path)
+    if args.set_main_config_path:
+        if os.path.isfile(args.set_main_config_path):
+            mothu_config_path_abs = os.path.abspath(args.set_main_config_path)
             print("Using {} as config file.".format(mothu_config_path_abs))
             time.sleep(2)
         else:
-            print("Failed to find or open {} config file. Using default.".format(args.set_config_path))
+            print("Failed to find or open {} config file. Using default.".format(args.set_main_config_path))
             time.sleep(2)
             mothu_config_path_abs = mut.get_dir_path("../config/mothulity.config")
     if args.set_slurm_config_path:
