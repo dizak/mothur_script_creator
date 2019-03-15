@@ -25,10 +25,11 @@ def main():
         usage="mothulity [OPTION]",
         description="creates slurm-suitable mothur script."
     )
+    databases = parser.add_argument_group("databases options")
     slurm = parser.add_argument_group("slurm options")
     mothur = parser.add_argument_group("mothur options")
-    advanced = parser.add_argument_group("advanced options")
     settings = parser.add_argument_group("configuration settings")
+    advanced = parser.add_argument_group("advanced options")
 
     parser.add_argument(
         "-v",
@@ -121,6 +122,26 @@ def main():
         prevents mothur script execution. Default <False>.
         """
     )
+    databases.add_argument(
+        "--set-align-database-path",
+        action="store",
+        dest="set_align_database_path",
+        metavar="",
+        default=None,
+        help="""
+        Set persistent path to align database.
+        """
+    )
+    databases.add_argument(
+        "--set-taxonomy-database-path",
+        action="store",
+        dest="set_taxonomy_database_path",
+        metavar="",
+        default=None,
+        help="""
+        Set persistent path to taxonomy database.
+        """
+    )
     slurm.add_argument(
         "--list-slurm-settings",
         action="store_true",
@@ -150,16 +171,6 @@ def main():
              nodes=1
              ntasks_per_node=1
              processors=12".
-        """
-    )
-    slurm.add_argument(
-        "--set-slurm-config-path",
-        action="store",
-        dest="set_slurm_config_path",
-        metavar="",
-        default=None,
-        help="""
-        Set temporary path to SLURM config file.
         """
     )
     slurm.add_argument(
@@ -424,26 +435,6 @@ def main():
         """
     )
     settings.add_argument(
-        "--set-align-database-path",
-        action="store",
-        dest="set_align_database_path",
-        metavar="",
-        default=None,
-        help="""
-        Set persistent path to align database.
-        """
-    )
-    settings.add_argument(
-        "--set-taxonomy-database-path",
-        action="store",
-        dest="set_taxonomy_database_path",
-        metavar="",
-        default=None,
-        help="""
-        Set persistent path to taxonomy database.
-        """
-    )
-    settings.add_argument(
         "--set-main-config-path",
         action="store",
         dest="set_main_config_path",
@@ -451,6 +442,16 @@ def main():
         default=None,
         help="""
         Set temporary path to config file.
+        """
+    )
+    settings.add_argument(
+        "--set-slurm-config-path",
+        action="store",
+        dest="set_slurm_config_path",
+        metavar="",
+        default=None,
+        help="""
+        Set temporary path to SLURM config file.
         """
     )
     advanced.add_argument(
