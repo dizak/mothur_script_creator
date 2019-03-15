@@ -152,6 +152,16 @@ def main():
              processors=12".
         """
     )
+    slu.add_argument(
+        "--set-slurm-config-path",
+        action="store",
+        dest="set_slurm_config_path",
+        metavar="",
+        default=None,
+        help="""
+        Set temporary path to SLURM config file.
+        """
+    )
     slurm.add_argument(
         "--partition",
         action="store",
@@ -413,16 +423,6 @@ def main():
         during subsampling.
         """
     )
-    advanced.add_argument(
-        "--exclude-krona",
-        action="store_true",
-        dest="exclude_krona",
-        default=False,
-        help="""
-        Do not include krona pie chart into final html. Krona can be included
-        only as an iframe.
-        """
-    )
     settings.add_argument(
         "--set-align-database-path",
         action="store",
@@ -453,15 +453,15 @@ def main():
         Set temporary path to config file.
         """
     )
-    settings.add_argument(
-        "--set-slurm-config-path",
-        action="store",
-        dest="set_slurm_config_path",
-        metavar="",
-        default=None,
-        help="""
-        Set temporary path to SLURM config file.
-        """
+    advanced.add_argument(
+    "--exclude-krona",
+    action="store_true",
+    dest="exclude_krona",
+    default=False,
+    help="""
+    Do not include krona pie chart into final html. Krona can be included
+    only as an iframe.
+    """
     )
 
     if len(sys.argv)==1:
