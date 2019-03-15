@@ -488,29 +488,29 @@ def main():
 # Read-in config file. CLI overrides default directory.
     if args.set_config_path:
         if os.path.isfile(args.set_config_path):
-            config_path_abs = os.path.abspath(args.set_config_path)
-            print("Using {} as config file.".format(config_path_abs))
+            mothu_config_path_abs = os.path.abspath(args.set_config_path)
+            print("Using {} as config file.".format(mothu_config_path_abs))
             time.sleep(2)
         else:
             print("Failed to find or open {} config file. Using default.".format(args.set_config_path))
             time.sleep(2)
-            config_path_abs = mut.get_dir_path("../config/mothulity.config")
+            mothu_config_path_abs = mut.get_dir_path("../config/mothulity.config")
     if args.set_slurm_config_path:
         if os.path.isfile(args.set_slurm_config_path):
-            config_slurm_path_abs = os.path.abspath(args.set_slurm_config_path)
-            print("Using {} as config file.".format(config_slurm_path_abs))
+            slurm_config_path_abs = os.path.abspath(args.set_slurm_config_path)
+            print("Using {} as config file.".format(slurm_config_path_abs))
             time.sleep(2)
         else:
             print("Failed to find or open {} config file. Using default.".format(args.set_slurm_config_path))
             time.sleep(2)
-            config_slurm_path_abs = mut.get_dir_path("../config/mothulity.config")
+            slurm_config_path_abs = mut.get_dir_path("../config/mothulity.config")
     else:
-        config_path_abs = mut.get_dir_path("../config/mothulity.config")
-        config_slurm_path_abs = mut.get_dir_path("../config/slurm.config")
+        mothu_config_path_abs = mut.get_dir_path("../config/mothulity.config")
+        slurm_config_path_abs = mut.get_dir_path("../config/slurm.config")
     config = configparser.ConfigParser()
-    config.read(config_path_abs)
+    config.read(mothu_config_path_abs)
     config_slurm = configparser.ConfigParser()
-    config_slurm.read(config_slurm_path_abs)
+    config_slurm.read(slurm_config_path_abs)
 # List SLURM MD settings from the config file.
     if args.list_slurm_settings:
         if len(config_slurm.sections()) == 0:
@@ -526,17 +526,17 @@ def main():
         if "databases" not in config.sections(): config.add_section("databases")
         if args.set_align_database_path:
             config.set("databases", "align", os.path.abspath(args.set_align_database_path))
-            with open(config_path_abs, "w") as fout: config.write(fout)
+            with open(mothu_config_path_abs, "w") as fout: config.write(fout)
         if args.set_taxonomy_database_path:
             config.set("databases", "taxonomy", os.path.abspath(args.set_taxonomy_database_path))
-            with open(config_path_abs, "w") as fout: config.write(fout)
+            with open(mothu_config_path_abs, "w") as fout: config.write(fout)
         exit()
     if args.add_slurm_setting:
         slurm_setting = dict(i.split("=") for i in args.add_slurm_setting.split())
         section = slurm_setting['name']
         slurm_setting.pop('name')
         config_slurm.read_dict({section: slurm_setting})
-        with open(config_slurm_path_abs, "w") as fout: config_slurm.write(fout)
+        with open(slurm_config_path_abs, "w") as fout: config_slurm.write(fout)
         exit()
 # Read options from config file.
 # If config file is the only source of the variable content and it is not found - quit from here.
