@@ -587,6 +587,12 @@ def main():
         align_database_abs = os.path.abspath(os.path.expanduser(args.align_database))
     if args.taxonomy_database:
         taxonomy_database_abs = os.path.abspath(os.path.expanduser(args.taxonomy_database))
+# Read and use SLURM config
+    if args.use_slurm_setting:
+        slurm_setting = {
+            k: slurm_config.get(args.use_slurm_setting, k)
+            for k in slurm_config[args.use_slurm_setting]
+        }
 # Override or not slurm options with args.resources.
     if args.resources is not None:
         node_list = None
