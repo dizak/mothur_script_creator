@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-{% if run == "sbatch" or nodes %}
-#SBATCH --job-name="{{job_name}}"
-#SBATCH --partition={{partition}}
-#SBATCH --nodes={{nodes}}
-#SBATCH --ntasks-per-node={{ntasks_per_node}}
-#SBATCH --exclude=gpu[1-8]
-{% endif %}
+{% for key, value in slurm_setting.items() %}
+#SBATCH --{{key}}={{value}}
+{%- endfor %}
 
 ###OTU approach analysis###
 
