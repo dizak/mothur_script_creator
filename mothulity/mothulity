@@ -517,17 +517,21 @@ def main():
     except Exception as e:
         print("Javascript links not found in config file. Output will not display properly!")
         time.sleep(2)
+    if args.use_slurm_setting:
+        try:
+            slurm_setting = {
+                k: slurm_config.get(args.use_slurm_setting, k)
+                for k in slurm_config[args.use_slurm_setting]
+            }
+        except Exception as e:
+            print("SLURM setting not found in config file! Quitting...")
+            time.sleep(2)
+            exit()
 # Override databases paths from config file with CLI args if specified.
     if args.align_database:
         align_database_abs = os.path.abspath(os.path.expanduser(args.align_database))
     if args.taxonomy_database:
         taxonomy_database_abs = os.path.abspath(os.path.expanduser(args.taxonomy_database))
-# Read and use SLURM config
-    if args.use_slurm_setting:
-        slurm_setting = {
-            k: slurm_config.get(args.use_slurm_setting, k)
-            for k in slurm_config[args.use_slurm_setting]
-        }
 # Override or not slurm options with args.resources.
     if args.resources is not None:
         node_list = None
