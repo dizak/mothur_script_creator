@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-{% for key, value in slurm_setting.items() %}
+{% if slurm_setting %}
+  {% for key, value in slurm_setting.items() %}
 #SBATCH --{{ key }}={{ value }}
-{%- endfor %}
+  {%- endfor %}
+{% endif %}
 ###Create *files file###
 mothulity_fc {{files_directory}} -o {{files_directory}}{{job_name}}.files
 {% if nodes > 1 %}
