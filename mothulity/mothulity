@@ -532,20 +532,6 @@ def main():
         align_database_abs = os.path.abspath(os.path.expanduser(args.align_database))
     if args.taxonomy_database:
         taxonomy_database_abs = os.path.abspath(os.path.expanduser(args.taxonomy_database))
-# Override or not slurm options with args.resources.
-    if args.resources is not None:
-        node_list = None
-        resources = args.resources.upper()
-        partition = mothu_config.get(resources, "partition")
-        nodes = int(mothu_config.get(resources, "nodes"))
-        ntasks_per_node = int(mothu_config.get(resources, "ntasks_per_node"))
-        processors = int(mothu_config.get(resources, "processors"))
-    else:
-        nodes = args.nodes
-        node_list = args.node_list
-        ntasks_per_node = args.ntasks_per_node
-        processors = args.processors
-        partition = args.partition
 # Make sure essential variables that can be overriden by CLI are defined.
 # Unless args.analysis_only or args.render_html are True - quit from here.
     if not args.analysis_only and not args.render_html:
