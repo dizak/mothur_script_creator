@@ -122,6 +122,16 @@ def main():
         prevents mothur script execution. Default <False>.
         """
     )
+    parser.add_argument(
+        "--processors",
+        action="store",
+        dest="processors",
+        metavar="",
+        default=None,
+        help="""
+        number of processors to use. Overrides any other source of this setting.
+        """
+    )
     databases.add_argument(
         "--set-align-database-path",
         action="store",
