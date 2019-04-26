@@ -4,7 +4,7 @@
 #SBATCH --job-name="analysis_travis_job"
 #SBATCH --partition=long
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=6
+#SBATCH --exclusive
 #SBATCH --exclude=gpu[1-8]
 
 
