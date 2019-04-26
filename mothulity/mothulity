@@ -720,6 +720,7 @@ def main():
                      "output_dir": output_dir_abs,
                      "job_name": args.job_name,
                      "run": args.run,
+                     "processors": processors,
                      "slurm_setting": slurm_setting,
                      "max_ambig": args.max_ambig,
                      "max_homop": args.max_homop,
