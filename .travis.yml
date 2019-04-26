@@ -32,7 +32,7 @@ script:
   - mothulity_dbaser $HOME/db --unite-ITS-02
   - mothulity --set-align-database-path $HOME/db/Unite_ITS_02/UNITEv6_sh_99.fasta --set-taxonomy-database-path $HOME/db/Unite_ITS_02/UNITEv6_sh_99.tax
 
-  - mothulity --add-slurm-setting "name=travis_queue partition=test exclusive=True exclude=gpu[1-8] processors=8"
+  - mothulity --add-slurm-setting "name=travis_queue partition=long exclusive exclude=gpu[1-8] processors=8"
 
   - mothulity test_data/new_run/mltp_smpl/fastq --dry-run -r bash -n travis_job --use-slurm-setting travis_queue --processors 1
   - diff test_data/new_run/mltp_smpl/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
