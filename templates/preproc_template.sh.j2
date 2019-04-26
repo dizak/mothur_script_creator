@@ -20,11 +20,11 @@ mothulity_fc {{files_directory}} -o {{files_directory}}{{job_name}}.files
 ########################
 ###Sequence preprocessing###
 srun mpirun mothur '#set.dir(input={{files_directory}}, output={{files_directory}});
+  {% endif %}
   {% else %}
 ###Sequence preprocessing###
 mothur '#set.dir(input={{files_directory}}, output={{files_directory}});
 set.current(processors={{processors}});
-  {% endif %}
 {% endif %}
 make.contigs(file={{job_name}}.files);
 summary.seqs(fasta=current);
