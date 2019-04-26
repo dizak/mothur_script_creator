@@ -479,7 +479,12 @@ def main():
             with open(mothu_config_path_abs, "w") as fout: mothu_config.write(fout)
         exit()
     if args.add_slurm_setting:
-        slurm_setting = dict(i.split("=") for i in args.add_slurm_setting.split())
+        slurm_setting = dict(
+            i.split("=")
+            if '=' in i
+            else (i, '')
+            for i in args.add_slurm_setting.split()
+            )
         section = slurm_setting['name']
         slurm_setting.pop('name')
         slurm_config.read_dict({section: slurm_setting})
