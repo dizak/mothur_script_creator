@@ -6,7 +6,8 @@
 {% endif %}
 ###Create *files file###
 mothulity_fc {{files_directory}} -o {{files_directory}}{{job_name}}.files
-{% if nodes > 1 %}
+{% if slurm_setting.nodes %}
+  {% if slurm_setting.nodes > 1 %}
 ########################
 # WARNING
 # Mothur was invoked on multiple nodes.
@@ -15,10 +16,11 @@ mothulity_fc {{files_directory}} -o {{files_directory}}{{job_name}}.files
 ########################
 ###Sequence preprocessing###
 srun mpirun mothur '#set.dir(input={{files_directory}}, output={{files_directory}});
-{% else %}
+  {% else %}
 ###Sequence preprocessing###
 mothur '#set.dir(input={{files_directory}}, output={{files_directory}});
 set.current(processors={{processors}});
+  {% endif %}
 {% endif %}
 make.contigs(file={{job_name}}.files);
 summary.seqs(fasta=current);
