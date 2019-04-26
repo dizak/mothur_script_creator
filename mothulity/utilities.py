@@ -5,7 +5,6 @@ from __future__ import print_function
 import six
 import sys
 import os
-import multiprocessing
 import psutil
 from glob import glob
 from six.moves import configparser
@@ -110,7 +109,7 @@ def determine_cpus(memory_per_cpu=3):
         GigaBytes of RAM that should be saved for a single CPU core. Default
         <3>
     """
-    cpus = multiprocessing.cpu_count()
+    cpus = psutil.cpu_count()
     mem = psutil.virtual_memory().total / 1024 ** 3
     supp_cpus = int(mem / memory_per_cpu)
     return cpus, supp_cpus
