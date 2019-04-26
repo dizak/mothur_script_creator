@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 {% if slurm_setting %}
-  {% for key, value in slurm_setting.items() %}
+  {%- for key, value in slurm_setting.items() %}
+    {%- if value|length > 1 %}
 #SBATCH --{{ key }}={{ value }}
+    {%- else %}
+#SBATCH --{{ key }}
+    {%- endif %}
   {%- endfor %}
 {% endif %}
 ###Create *files file###
