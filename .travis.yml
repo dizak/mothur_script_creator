@@ -34,13 +34,13 @@ script:
 
   - mothulity --add-slurm-setting "name=travis_queue partition=test exclusive=True exclude=gpu[1-8] processors=8"
 
-  - mothulity test_data/new_run/mltp_smpl/fastq --dry-run -r bash -n travis_job --use-slurm-setting travis_queue
+  - mothulity test_data/new_run/mltp_smpl/fastq --dry-run -r bash -n travis_job --use-slurm-setting travis_queue --processors 1
   - diff test_data/new_run/mltp_smpl/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
 
   - mothulity test_data/analysis/mltp_smpl/shared_tax --dry-run -r bash -n analysis_travis_job --analysis-only --use-slurm-setting travis_queue
   - diff test_data/analysis/mltp_smpl/script/analysis_travis_job.sh analysis_travis_job.sh --ignore-blank-lines --ignore-trailing-space
 
-  - mothulity test_data/new_run/single_smpl/fastq --dry-run -r bash -n travis_job --use-slurm-setting travis_queue
+  - mothulity test_data/new_run/single_smpl/fastq --dry-run -r bash -n travis_job --use-slurm-setting travis_queue --processors 1
   - diff test_data/new_run/single_smpl/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
 
   - mothulity test_data/analysis/single_smpl/shared_tax --dry-run -r bash -n analysis_travis_job --analysis-only --use-slurm-setting travis_queue
