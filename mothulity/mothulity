@@ -490,7 +490,7 @@ def main():
         slurm_config.read_dict({section: slurm_setting})
         with open(slurm_config_path_abs, "w") as fout: slurm_config.write(fout)
         exit()
-# Read options from config file.
+# Read options from config file and wrap them up into proper variables
 # If config file is the only source of the variable content and it is not found - quit from here.
     try:
         preproc_template = mothu_config.get("templates", "preproc")
