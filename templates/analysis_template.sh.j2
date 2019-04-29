@@ -3,7 +3,7 @@
 {% if slurm_setting %}
 #SBATCH --job-name="{{job_name}}"
   {%- for key, value in slurm_setting.items() %}
-    {%- if value|length > 1 %}
+    {%- if value|length > 0 %}
 #SBATCH --{{ key }}={{ value }}
     {%- else %}
 #SBATCH --{{ key }}
