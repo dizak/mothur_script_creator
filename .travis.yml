@@ -69,7 +69,8 @@ script:
 # Check how mothulity refuses to work with dashed directories
   - mothulity test_data/dashed-dir/fastq --dry-run -r bash > test_dashed_path.log
   - diff test_data/logs/dashed_path.log test_dashed_path.log --ignore-blank-lines --ignore-trailing-space
-# Check how mothulty saved setting to config file
+# Check how mothulty saves setting to config file before running the analysis
+  - rm -r test_data/new_run/mltp_smpl/fastq/!(*fastq)
   - mothulity test_data/new_run/mltp_smpl/fastq --dry-run -r bash -n travis_job --set-main-config-path test_data/config/mothulity.config > test_config_success.log
   - diff test_data/logs/config_success.log test_config_success.log --ignore-blank-lines --ignore-trailing-space
 # Check how mothulity refuses to save settign to non-existing config file
