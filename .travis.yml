@@ -37,11 +37,15 @@ script:
 # Run new analysis on multiple samples
   - mothulity test_data/new_run/mltp_smpl/fastq -r bash -n travis_job
 ## Check results files list
+  - ls !(mothur*logfile) -d > test_files_list
+  - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
 ## Check the script content
   - diff test_data/new_run/mltp_smpl/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
 # Run new analysis on a single sample
   - mothulity test_data/new_run/single_smpl/fastq -r bash -n travis_job
 ## Check results files list
+  - ls !(mothur*logfile) -d > test_files_list
+  - diff test_data/new_run/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
 ## Check the script content
   - diff test_data/new_run/single_smpl/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
 # Run analysis on multiple samples
