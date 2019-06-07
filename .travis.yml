@@ -34,14 +34,14 @@ script:
   - mothulity_dbaser $HOME/db --unite-ITS-02
 # Set persistent databases paths
   - mothulity --set-align-database-path test_data/database/t19.align --set-taxonomy-database-path test_data/database/t19.tax
-# Run new analysis on multiple samples. Set output path for script the same as for all other files instead of the CWD.
+# Run new analysis on multiple samples.
   - mothulity test_data/new_run/mltp_smpl/fastq -r bash -n travis_job
 ## Check results files list
   - ls test_data/new_run/mltp_smpl/fastq/ --hide mothur*logfile > test_files_list
   - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
 ## Check the script content
   - diff test_data/new_run/mltp_smpl/script/travis_job.sh travis_job.sh --ignore-blank-lines --ignore-trailing-space
-# Run new analysis on a single sample. Set output path for script the same as for all other files instead of the CWD.
+# Run new analysis on a single sample.
   - mothulity test_data/new_run/single_smpl/fastq -r bash -n travis_job
 ## Check results files list
   - ls test_data/new_run/single_smpl/fastq/ --hide mothur*logfile > test_files_list
