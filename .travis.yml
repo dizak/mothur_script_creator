@@ -39,6 +39,8 @@ script:
 ## Check results files list
   - ls test_data/new_run/mltp_smpl/fastq/ --hide mothur*logfile > test_files_list
   - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
+## Check tax.summary file content
+  - diff <(awk '{print $1,$2,$3}' test_data/new_run/mltp_smpl/fastq/*tax.summary) <(awk '{print $1,$2,$3}' test_data/analysis/mltp_smpl/shared_tax/*tax.summary)
 ## Check the HTML report presence
   - ls test_data/new_run/mltp_smpl/fastq/analysis/OTU/analysis_travis_job.html
 ## Check the script content
