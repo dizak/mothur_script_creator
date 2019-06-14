@@ -497,7 +497,7 @@ def main():
             )
         section = slurm_setting['name']
         slurm_setting.pop('name')
-        slurm_config.read_dict({section: slurm_setting})
+        for k, v in slurm_setting.items(): slurm_config.set(section, k, v)
         with open(slurm_config_path_abs, "w") as fout: slurm_config.write(fout)
         exit()
 # Read options from config file and wrap them up into proper variables
