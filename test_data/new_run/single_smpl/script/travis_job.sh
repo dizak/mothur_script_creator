@@ -14,7 +14,7 @@ mothulity_fc /home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fa
 
 ###Sequence preprocessing###
 mothur '#set.dir(input=/home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/, output=/home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/);
-set.current(processors=1);
+set.current(processors=2);
 
 make.contigs(file=travis_job.files);
 summary.seqs(fasta=current);
