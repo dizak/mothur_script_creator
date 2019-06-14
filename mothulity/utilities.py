@@ -112,7 +112,6 @@ def determine_cpus(memory_per_cpu=3):
     cpus = psutil.cpu_count()
     mem = psutil.virtual_memory().total / 1024 ** 3
     supp_cpus = int(mem / memory_per_cpu)
-    return cpus, supp_cpus
     if supp_cpus > cpus:
         return cpus
     else:
