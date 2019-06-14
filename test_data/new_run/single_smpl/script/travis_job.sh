@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-
-#SBATCH --job-name="travis_job"
-#SBATCH --partition=long
-#SBATCH --nodes=1
-#SBATCH --exclusive
-#SBATCH --exclude=gpu[1-8]
-
-
-
 ###Create *files file###
 mothulity_fc /home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/ -o /home/travis/build/dizak/mothulity/test_data/new_run/single_smpl/fastq/travis_job.files
 

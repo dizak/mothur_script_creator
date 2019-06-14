@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-
-#SBATCH --job-name="analysis_travis_job"
-#SBATCH --partition=long
-#SBATCH --nodes=1
-#SBATCH --exclusive
-#SBATCH --exclude=gpu[1-8]
-
-
 ###OTU approach analysis###
 
 #Create directories and shorten shared file name
