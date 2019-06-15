@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 #SBATCH --job-name="travis_job_slurm"
-#SBATCH --partition=test
-#SBATCH --nodes=1
-#SBATCH --processors=12
 #SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH --partition=test
+#SBATCH --processors=12
 
 ###Create *files file###
 mothulity_fc /home/travis/build/dizak/mothulity/test_data/new_run/mltp_smpl/fastq/ -o /home/travis/build/dizak/mothulity/test_data/new_run/mltp_smpl/fastq/travis_job.files
