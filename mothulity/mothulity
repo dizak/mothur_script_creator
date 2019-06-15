@@ -537,7 +537,7 @@ def main():
         try:
             slurm_setting = {
                     k: v
-                    for k, v in slurm_config.items(use_slurm_setting)
+                    for k, v in slurm_config.items(args.use_slurm_setting)
             }
         except Exception as e:
             print("SLURM setting not found in config file! Quitting...")
