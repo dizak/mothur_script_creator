@@ -74,6 +74,10 @@ script:
   - diff test_data/analysis/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching-lines "mothur*logfile"
 ## Check the script content
   - diff test_data/analysis/single_smpl/script/analysis_travis_job.sh analysis_travis_job.sh --ignore-blank-lines --ignore-trailing-space
+# Check slurm add/list/use
+  - mothulity . --add-slurm-setting "name=travis partition=test nodes=1 processors=12"
+## Generate mothur script with slurm flags
+  - mothulity . --list-slurm-settings
 # Check how mothulity refuses to work with dashed directories
   - mothulity test_data/dashed-dir/fastq --dry-run -r bash > test_dashed_path.log
   - diff test_data/logs/dashed_path.log test_dashed_path.log --ignore-blank-lines --ignore-trailing-space
