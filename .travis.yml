@@ -78,7 +78,8 @@ script:
 ## Add slurm setting
   - mothulity . --add-slurm-setting "name=travis partition=test nodes=1 processors=12 exclusive"
 ## List slurm setting
-  - diff <(mothulity . --list-slurm-settings) test_data/logs/list_slurm_settings.log --ignore-blank-lines --ignore-trailing-space
+#  - diff <(mothulity . --list-slurm-settings) test_data/logs/list_slurm_settings.log --ignore-blank-lines --ignore-trailing-space
+  - mothulity . --list-slurm-settings
 ## Generate mothur script with slurm flags
   - mothulity test_data/new_run/mltp_smpl/fastq --dry-run -r sbatch -n travis_job_slurm --use-slurm-setting travis
   - diff test_data/new_run/mltp_smpl/script/travis_job_slurm.sh travis_job_slurm.sh --ignore-blank-lines --ignore-trailing-space
