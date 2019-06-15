@@ -14,7 +14,7 @@ try:
 except ImportError:
     __version__ = "development"
 try:
-    import mothulity.utilities as mut
+    import utilities as mut
 except ImportError:
     import utilities as mut
 
