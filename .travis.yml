@@ -38,7 +38,7 @@ script:
   - mothulity test_data/new_run/mltp_smpl/fastq -r bash -n travis_job
 ## Check results files list
   - ls --hide mothur*logifle test_data/new_run/mltp_smpl/fastq/ > test_files_list
-  - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching-lines "current*" --ignore-matching-lines "mothur*logfile"
+  - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching-lines "mothur*logfile"
 ## Check shared file content
   - diff <(awk '{print $1,$2}' test_data/new_run/mltp_smpl/fastq/*shared) <(awk '{print $1,$2}' test_data/analysis/mltp_smpl/shared_tax/*shared)
 ## Check tax.summary file content
@@ -51,7 +51,7 @@ script:
   - mothulity test_data/new_run/single_smpl/fastq -r bash -n travis_job
 ## Check results files list
   - ls --hide mothur*logifle test_data/new_run/single_smpl/fastq/ > test_files_list
-  - diff test_data/new_run/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching-lines "current*" --ignore-matching-lines "mothur*logfile"
+  - diff test_data/new_run/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching-lines "mothur*logfile"
 ## Check shared file content
   - diff <(awk '{print $1,$2}' test_data/new_run/single_smpl/fastq/*shared) <(awk '{print $1,$2}' test_data/analysis/single_smpl/shared_tax/*shared)
 ## Check tax.summary file content
