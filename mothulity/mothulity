@@ -475,8 +475,8 @@ def main():
             exit()
         for section in slurm_config.sections():
             print(section, end="\n-------\n")
-            for key in slurm_config[section]:
-                print(key, slurm_config.get(section, key), sep=': ')
+            for k, v in slurm_config.items(section):
+                print(k, v, sep=': ')
         exit()
 # Set config file options.
     if any((args.set_align_database_path, args.set_taxonomy_database_path)):
