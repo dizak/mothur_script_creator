@@ -83,8 +83,7 @@ script:
   - diff <(mothulity . --list-slurm-settings) test_data/logs/list_slurm_settings.log --ignore-blank-lines --ignore-trailing-space
 ## Generate mothur script with slurm flags
   - mothulity test_data/new_run/mltp_smpl/fastq --dry-run -r sbatch -n travis_job_slurm --use-slurm-setting travis
-  - cat travis_job_slurm.sh
-#  - diff test_data/new_run/mltp_smpl/script/travis_job_slurm.sh travis_job_slurm.sh --ignore-blank-lines --ignore-trailing-space
+  - diff test_data/new_run/mltp_smpl/script/travis_job_slurm.sh travis_job_slurm.sh --ignore-blank-lines --ignore-trailing-space
 # Check how mothulity refuses to work with dashed directories
   - mothulity test_data/dashed-dir/fastq --dry-run -r bash > test_dashed_path.log
   - diff test_data/logs/dashed_path.log test_dashed_path.log --ignore-blank-lines --ignore-trailing-space
