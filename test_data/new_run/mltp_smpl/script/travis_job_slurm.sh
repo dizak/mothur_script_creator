@@ -50,4 +50,4 @@ count.groups(shared=current)'
 
 
 ###Call mothulity for the analysis part###
-mothulity /home/travis/build/dizak/mothulity/test_data/new_run/mltp_smpl/fastq/ -n analysis_travis_job_slurm --output-dir /home/travis/build/dizak/mothulity/ --analysis-only -r bash
+mothulity /home/travis/build/dizak/mothulity/test_data/new_run/mltp_smpl/fastq/ -n analysis_travis_job_slurm --output-dir /home/travis/build/dizak/mothulity/ --analysis-only -r sbatch
