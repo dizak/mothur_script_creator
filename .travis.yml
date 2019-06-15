@@ -38,7 +38,7 @@ script:
   - mothulity test_data/new_run/mltp_smpl/fastq -r bash -n travis_job
 ## Check results files list
   - ls --hide mothur*logifle test_data/new_run/mltp_smpl/fastq/ > test_files_list
-  - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
+  - diff test_data/new_run/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching lines "current*" --ignore-matching-lines "mothur*logfile"
 ## Check shared file content
   - diff <(awk '{print $1,$2}' test_data/new_run/mltp_smpl/fastq/*shared) <(awk '{print $1,$2}' test_data/analysis/mltp_smpl/shared_tax/*shared)
 ## Check tax.summary file content
@@ -51,7 +51,7 @@ script:
   - mothulity test_data/new_run/single_smpl/fastq -r bash -n travis_job
 ## Check results files list
   - ls --hide mothur*logifle test_data/new_run/single_smpl/fastq/ > test_files_list
-  - diff test_data/new_run/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
+  - diff test_data/new_run/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching lines "current*" --ignore-matching-lines "mothur*logfile"
 ## Check shared file content
   - diff <(awk '{print $1,$2}' test_data/new_run/single_smpl/fastq/*shared) <(awk '{print $1,$2}' test_data/analysis/single_smpl/shared_tax/*shared)
 ## Check tax.summary file content
@@ -64,14 +64,14 @@ script:
   - mothulity test_data/analysis/mltp_smpl/shared_tax -r bash -n analysis_travis_job --analysis-only
 ## Check results files list
   - ls --hide mothur*logifle test_data/analysis/mltp_smpl/shared_tax/analysis/OTU/ > test_files_list
-  - diff test_data/analysis/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
+  - diff test_data/analysis/mltp_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching lines "current*" --ignore-matching-lines "mothur*logfile"
 ## Check the script content
   - diff test_data/analysis/mltp_smpl/script/analysis_travis_job.sh analysis_travis_job.sh --ignore-blank-lines --ignore-trailing-space
 # Run analysis on a single sample
   - mothulity test_data/analysis/single_smpl/shared_tax -r bash -n analysis_travis_job --analysis-only
 ## Check results files list
   - ls --hide mothur*logifle test_data/analysis/single_smpl/shared_tax/analysis/OTU/ > test_files_list
-  - diff test_data/analysis/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space
+  - diff test_data/analysis/single_smpl/results/files_list test_files_list --ignore-blank-lines --ignore-trailing-space --ignore-matching lines "current*" --ignore-matching-lines "mothur*logfile"
 ## Check the script content
   - diff test_data/analysis/single_smpl/script/analysis_travis_job.sh analysis_travis_job.sh --ignore-blank-lines --ignore-trailing-space
 # Check how mothulity refuses to work with dashed directories
