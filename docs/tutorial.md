@@ -191,8 +191,17 @@ mothulity ~/MiSeq_SOP -n my_first_mothulity_project -r sbatch --use-slurm-settin
 
 This tells ```mothulity``` to run the analysis using [SLURM](https://slurm.schedmd.com/) with previously defined ```big_queue``` settings. It renders:
 
+
 ```bash
-#SBATCH 
-#SBATCH 
-#SBATCH 
+#SBATCH --job-name="my_first_mothulity_project"
+#SBATCH --partition=test
+#SBATCH --exclusive
+```
+
+and puts it before the rest of the script that runs [Mothur](https://mothur.org/wiki/Main_Page)
+
+1. If you want to what settings are already saved - type:
+
+```bash
+mothulity --list-slurm-settings
 ```
