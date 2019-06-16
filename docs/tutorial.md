@@ -169,10 +169,10 @@ The output is placed in ```~/MiSeq_SOP/analysis/OTU/analysis_my_first_mothulity_
 
 There are three options to manage [Slurm Workload Manager](https://www.schedmd.com):
 
-1. --add-slurm-setting
+1.```--add-slurm-setting```
 
-1. --list-slurm-settings
+1.``` --list-slurm-settings```
 
-1. --use-slurm-setting
+1. ```--use-slurm-setting```
 
 The user is free to go with any configuration really. A real-life example might be:
