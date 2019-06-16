@@ -161,7 +161,7 @@ The output is placed in ```~/MiSeq_SOP/analysis/OTU/analysis_my_first_mothulity_
 ## [Slurm Workload Manager](https://www.schedmd.com)
 
 
-```mothulity``` can be conveniently used with [Slurm Workload Manager](https://www.schedmd.com) so it is good idea to use on your HPC/computing facility. It requires two steps:
+```mothulity``` can be conveniently used with [Slurm Workload Manager](https://www.schedmd.com) so it is good idea to use it on your HPC/computing facility. It requires two steps:
 
 1. Configuration of your queues/jobs.
 
