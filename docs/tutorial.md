@@ -171,7 +171,7 @@ There are three options to manage [Slurm Workload Manager](https://www.schedmd.c
 
 1.```--add-slurm-setting```
 
-1.``` --list-slurm-settings```
+1.```--list-slurm-settings```
 
 1. ```--use-slurm-setting```
 
