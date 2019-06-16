@@ -19,6 +19,8 @@ layout: default
 
 [Running Analysis](#running-analysis)
 
+[Slurm Workload Manager](#slurm-md)
+
 ```mothulity``` is simple to use. Nevertheless, it won't hurt to show some brief usage example.
 
 
@@ -154,3 +156,23 @@ mothulity ~/MiSeq_SOP -r bash -n my_first_mothulity_project
 ```-n my_first_mothulity_project``` is used to name files, directories and give a title the final output.
 
 The output is placed in ```~/MiSeq_SOP/analysis/OTU/analysis_my_first_mothulity_project.html``` and should look like [this](./analysis-example/analysis-my-first-mothulity-project.html)
+
+
+## [Slurm Workload Manager](https://www.schedmd.com)
+
+
+```mothulity``` can be conveniently used with [Slurm Workload Manager](https://www.schedmd.com) so it is good idea to use on your HPC/computing facility. It requires two steps:
+
+1. Configuration of your queues/jobs.
+
+1. Specifying the ```sbatch``` as shell to run.
+
+There are three options to manage [Slurm Workload Manager](https://www.schedmd.com):
+
+1. --add-slurm-setting
+
+1. --list-slurm-settings
+
+1. --use-slurm-setting
+
+The user is free to go with any configuration really. A real-life example might be:
