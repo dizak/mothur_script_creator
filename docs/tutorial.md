@@ -176,3 +176,23 @@ There are three options to manage [Slurm Workload Manager](https://www.schedmd.c
 1. ```--use-slurm-setting```
 
 The user is free to go with any configuration really. A real-life example might be:
+
+1.
+```bash
+mothulity --add-slurm-setting "name=big_queue partition=long processors=32 exclusive"
+```
+
+The options specified here are used as SBATCH flags. The ```name``` keyword is reserved and is used to call the desired settings later on. The setting is permanent. Another setting with the same name would **overwrite the previous one**!
+
+1.
+```bash
+mothulity ~/MiSeq_SOP -n my_first_mothulity_project -r sbatch --use-slurm-setting big_queue
+```
+
+This tells ```mothulity``` to run the analysis using [SLURM](https://slurm.schedmd.com/) with previously defined ```big_queue``` settings. It renders:
+
+```bash
+#SBATCH 
+#SBATCH 
+#SBATCH 
+```
