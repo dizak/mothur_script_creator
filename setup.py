@@ -34,7 +34,7 @@ setup(
         ("lib", kronatools_lib_files),
         ("src", kronatools_src_files),
     ],
-    python_requires='<3.7, !=3.4',
+    python_requires='!=3.4',
     install_requires=open("requirements.txt").readlines(),
     description="Easy-to-use tool facilitating work with Mothur.",
     long_description=open("README.md").read().split('\n\n\n### Contribution')[0],
@@ -48,7 +48,7 @@ setup(
         "mothulity/mothulity_draw",
         "mothulity/mothulity_dbaser",
         "mothulity/mothulity_fc",
-     ],
+    ],
     keywords=[
         "mothur",
         "diversity",
@@ -68,5 +68,6 @@ setup(
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
     ]
 )
