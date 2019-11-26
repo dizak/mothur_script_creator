@@ -134,7 +134,7 @@ def main():
     )
     test_run.add_argument(
         "--get-test-run-data",
-        action="store",
+        action="store_true",
         dest="get_test_run_data",
         metavar="",
         default=None,
