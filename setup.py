@@ -12,7 +12,7 @@ kronatools_img_files = glob("bin/kronatools/img/*")
 kronatools_lib_files = glob("bin/kronatools/lib/*")
 kronatools_src_files = glob("bin/kronatools/src/*")
 test_run_database = glob("test_data/database/*")
-test_run_samples = glob("test_data/samples/*")
+test_run_samples = glob("test_data/new_run/mltp_smpl/fastq/*")
 
 setup(
     name="mothulity",
