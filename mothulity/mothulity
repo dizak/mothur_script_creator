@@ -472,9 +472,11 @@ def main():
 
 # Copy the test-run set into the CWD
     if args.get_test_run_data:
+        test_run_database_path_abs = mut.get_dir_path("../test_run_database")
+        test_run_samples_path_abs = mut.get_dir_path("../test_run_samples")
         print("Copying the test-run files into your CWD...")
-        os.system("cp -r ../test_run_database .")
-        os.system("cp -r ../test_run_samples .")
+        os.system("cp -r {} .".format(test_run_database_path_abs))
+        os.system("cp -r {} .".format(test_run_samples_path_abs))
         exit()
 # Define variables that can overridden by CLI, config or other function and should cause exit if None in a proper place in the decision tree.
     align_database_abs = None
