@@ -137,7 +137,7 @@ def main():
         action="store_true",
         dest="get_test_run_data",
         metavar="",
-        default=None,
+        default=False,
         help="""
         Copy the test-run database and samples set in your CWD.
         """
