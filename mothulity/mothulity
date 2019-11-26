@@ -471,7 +471,7 @@ def main():
         parser.exit()
 
 # Copy the test-run set into the CWD
-    if get_test_run_data:
+    if args.get_test_run_data:
         print("Copying the test-run files into your CWD...")
         os.system("cp -r ../test_run_database .")
         os.system("cp -r ../test_run_samples .")
