@@ -31,6 +31,8 @@ script:
   - python -m unittest -v tests.tests
 # Test-run files copying
   - mothulity --get-test-run-data
+  # Debug ls
+  - ls
   - ls test_run_database
   - ls test_run_samples
 # Database download test
