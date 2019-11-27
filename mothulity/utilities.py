@@ -26,6 +26,8 @@ from seaborn import heatmap
 from seaborn import pairplot
 from seaborn import lmplot
 from lxml import etree as et
+import base64
+from io import BytesIO
 
 
 def get_dir_path(file_name=""):
@@ -522,16 +524,17 @@ def draw_rarefaction(input_file_name,
     df[cols].plot(ax=ax,
                   figsize=figsize)
     labels = list(df.columns.values)
-    for i in range(len(labels)):
-        tooltip = mpld3.plugins.LineLabelTooltip(ax.get_lines()[i],
-                                                 labels[i])
-        mpld3.plugins.connect(plt.gcf(), tooltip)
     plt.grid(True)
     plt.title(title)
     plt.ylabel(ylabel)
     plt.xlabel(xlabel)
+    # Embed the result in the html output.
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    encoded = base64.b64encode(buf.getvalue()).decode('utf-8')
+    html ='<img src=\'data:image/png;base64,{}\'>'.format(encoded)
     with open(output_file_name, "wb") as fout:
-        fout.write(mpld3.fig_to_html(fig).encode('utf-8'))
+        fout.write(html)
 
 
 def draw_heatmap(input_file_name,
