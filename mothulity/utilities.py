@@ -316,9 +316,11 @@ def parse_html(input_file_name,
                 "googleapis_script": tags[3],
                 "datatables_script": tags[4],
                 "script": tags[5]}
-    elif html_type == "rarefaction" or html_type == "nmds":
+    elif html_type == "nmds":
         return {"div": str(soup.div),
                 "script": str(soup.script)}
+    elif html_type == "rarefaction":
+        return {"img": soup.img}
 
 
 def names_sanitizer(files_directory,
