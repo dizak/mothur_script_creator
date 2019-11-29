@@ -316,10 +316,7 @@ def parse_html(input_file_name,
                 "googleapis_script": tags[3],
                 "datatables_script": tags[4],
                 "script": tags[5]}
-    elif html_type == "nmds":
-        return {"div": str(soup.div),
-                "script": str(soup.script)}
-    elif html_type == "rarefaction":
+    elif html_type == "nmds" or html_type == "rarefaction":
         return {"img": soup.img}
 
 
@@ -655,9 +652,13 @@ def draw_scatter(input_file_name,
     ax.grid(color=grid_color, linestyle=grid_style)
     ax.set_title(title_text, size=title_size)
     labels = list(df[group_col])
-    tooltip = mpld3.plugins.PointLabelTooltip(scatter, labels=labels)
-    mpld3.plugins.connect(fig, tooltip)
-    mpld3.save_html(fig, output_file_name)
+    # Embed the result in the html output.
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    encoded = base64.b64encode(buf.getvalue()).decode('utf-8')
+    html ='<img src=\'data:image/png;base64,{}\'>'.format(encoded)
+    with open(output_file_name, "wb") as fout:
+        fout.write(html)
 
 
 def summary2html(input_file_name,
