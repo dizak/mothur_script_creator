@@ -19,7 +19,6 @@ matplotlib.use('Agg')
 import pylab
 import matplotlib.pyplot as plt
 import matplotlib.style as style
-import mpld3
 import numpy as np
 from pandas import read_csv
 from seaborn import heatmap
