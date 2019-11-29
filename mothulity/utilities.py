@@ -531,7 +531,7 @@ def draw_rarefaction(input_file_name,
     plt.savefig(buf, format="png")
     encoded = base64.b64encode(buf.getvalue()).decode('utf-8')
     html ='<img src=\'data:image/png;base64,{}\'>'.format(encoded)
-    with open(output_file_name, "wb") as fout:
+    with open(output_file_name, "w") as fout:
         fout.write(html)
 
 
@@ -656,7 +656,7 @@ def draw_scatter(input_file_name,
     plt.savefig(buf, format="png")
     encoded = base64.b64encode(buf.getvalue()).decode('utf-8')
     html ='<img src=\'data:image/png;base64,{}\'>'.format(encoded)
-    with open(output_file_name, "wb") as fout:
+    with open(output_file_name, "w") as fout:
         fout.write(html)
 
 
