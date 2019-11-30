@@ -521,7 +521,6 @@ def draw_rarefaction(input_file_name,
     fig, ax = plt.subplots()
     df[cols].plot(ax=ax,
                   figsize=figsize)
-    labels = list(df.columns.values)
     plt.grid(True)
     plt.title(title)
     plt.ylabel(ylabel)
