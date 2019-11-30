@@ -640,17 +640,23 @@ def draw_scatter(input_file_name,
         Delimiter to use for reading-in axes file.
     """
     df = read_csv(input_file_name,
-                  sep=sep)
+                  sep=sep, 
+                  index_col=group_col)
     fig, ax = plt.subplots()
-    scatter = ax.scatter(np.array(df[axis1_col]),
-                         np.array(df[axis2_col]),
-                         c=np.random.random(size=len(df)),
-                         s=100,
-                         alpha=0.3,
-                         cmap=plt.cm.jet)
+    variants = set(df.index.values) 
+    for i, variant in enumerate(variants):
+        x = np.array(df.loc[variant][axis1_col])
+        y = np.array(df.loc[variant][axis2_col])
+        ax.scatter(x, 
+                   y, 
+                   s=point_size, 
+                   label=variant, 
+                   alpha=point_alpha, 
+                   cmap=plt.cm.jet(i))
+
+    ax.legend()
     ax.grid(color=grid_color, linestyle=grid_style)
     ax.set_title(title_text, size=title_size)
-    labels = list(df[group_col])
     # Embed the result in the html output.
     buf = BytesIO()
     plt.savefig(buf, format="png")
