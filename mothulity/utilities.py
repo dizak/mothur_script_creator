@@ -441,7 +441,7 @@ def get_db(url,
         with open(save_path, "wb") as fout:
             for i in tqdm(res.iter_content(chunk_size=chunk),
                             total=total_len / chunk,
-                            ascii=True):
+                            ascii=' 123456789#'):
                 fout.write(i)
     return res.status_code
 
