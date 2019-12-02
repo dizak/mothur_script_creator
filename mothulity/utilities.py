@@ -442,6 +442,7 @@ def get_db(url,
             for i in tqdm(res.iter_content(chunk_size=chunk),
                             total=total_len / chunk,
                             ascii=True):
+                fout.write(i)
     return res.status_code
 
 
