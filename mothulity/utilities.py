@@ -439,8 +439,7 @@ def get_db(url,
     total_len = int(res.headers.get("content-length"))
     if res.status_code == 200:
         with open(save_path, "wb") as fout:
-            for i in tqdm(res.iter_content(chunk_size=chunk),
-                          total=total_len / chunk):
+            for i in tqdm(res.iter_content(chunk_size=chunk)):
                 fout.write(i)
     return res.status_code
 
